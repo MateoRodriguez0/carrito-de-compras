@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet"  th:href="@{/css/home.css}">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+<title>Carrito de compras | pagina principal</title>
+</head>
+<body>
+
+
+<div class="titulo">
+<h1 class="titulopagina">carrito de compras <a th:href="@{/carritodecompras/}"><img alt="carrito" th:src="@{/images/logo-home.png}"></a></h1>
+</div>
+
+<div class="opciones"> 
+
+	<a th:href="@{/carritodecompras/inicio}"> <button id="btn" type="button" class="btn btn-outline-light rounded-pill" >Iniciar sesion</button> </a>
+	<br><br><br>
+	<a th:href="@{/carritodecompras/registro}"><button id="btn" type="button" class="btn btn-outline-light rounded-pill" >Crear cuenta</button></a> 
+		
+</div>
+
+
+
+<footer th:insert="~{/fragmentos/footer.html::footer-inicio-registro-principal}"></footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>

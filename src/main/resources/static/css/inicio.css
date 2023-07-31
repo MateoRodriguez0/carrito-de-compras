@@ -1,0 +1,75 @@
+@charset "ISO-8859-1";
+
+body{
+background:linear-gradient(to right,#141E30,#243B55) ;
+justify-content: center;
+}
+
+footer{
+	color: white;
+	padding: 20px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+   
+    }
+    
+.formulario-inicio{
+	color: white;
+	text-align: center;
+	position:relative;
+	margin-left: 1200px;
+	top: 100px;
+	
+	}
+	
+	#ilustracion{
+	position: absolute;
+	margin-left: 100px;
+	top: 100px;
+	width: 1000px;
+	}
+
+#no-tienes-cuenta{
+	color: white;
+	position: relative;
+
+}
+
+#especial{
+	width:410px;
+	height:40px;
+}
+
+.h1{
+	font-size:50px;
+	
+}
+header{
+	height: 50px;
+}
+
+.logo{
+	margin-top: 10px;
+	margin-left:50px;
+}
+
+#Campodetexto{
+	height: 40px;
+	color: white;
+	border:2px solid white;
+	padding:15px;
+	background-color:  #243B55;
+	font-family: Helvetica;
+
+}
+#Campodetexto::placeholder{
+	color:  white;
+}
+
+#Campodetexto:focus,#especial:focus {
+  border-color: white; /* Cambiar el color del borde cuando el campo está enfocado */
+  outline: none; /* Quitar el contorno predeterminado que algunos navegadores añaden al enfoque */
+}

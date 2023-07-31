@@ -1,0 +1,45 @@
+@charset "ISO-8859-1";
+
+
+body{
+background:linear-gradient(to right,#141E30,#243B55) ;
+justify-content: center;
+}
+
+footer{
+	color:mintcream;
+	padding: 20px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+   
+    }
+
+.titulo{
+	position: relative;
+	top: 100px;
+	text-align: center;
+	}
+	
+	
+.titulopagina{
+	font-size:50px;
+	color: white;
+}	
+
+.opciones{
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	top: 200px;
+	text-align: center;
+	
+	
+}
+
+#btn{
+	width:400px ;
+	height: 60px;
+}

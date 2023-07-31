@@ -1,0 +1,72 @@
+@charset "ISO-8859-1";
+body{
+background:white;
+justify-content: center;
+}
+#ilustracion{
+	position: absolute;	
+	top:50px;
+	margin-left: 830px;
+}
+
+footer{
+	color:#243B55;
+	padding: 20px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+   
+    }
+    
+.form-registro{
+	color:#243B55;
+	align-items: center;
+	text-align: center;
+	position: absolute;
+	margin-top: 50px;
+	align-items: center;
+	width: 800px;
+}   
+.h1{
+	font-size:50px;
+	
+}
+#tienes-cuenta{
+	right:50px;
+	position: relative;
+
+}
+
+#especial,#crear{
+	width:410px;
+	height:40px;
+	
+}
+
+header{
+	height: 50px;
+}
+
+.logo{
+	margin-top: 10px;
+	margin-left:50px;
+}
+
+#Campodetexto,#especial{
+	height: 40px;
+	color:  #243B55;
+	border:2px solid #243B55;
+	padding:15px;
+	font-family:Helvetica;
+
+}
+#Campodetexto::placeholder{
+	color:  #243B55;
+}
+
+#Campodetexto:focus,#especial:focus {
+  border-color: #243B55; /* Cambiar el color del borde cuando el campo está enfocado */
+  outline: none; /* Quitar el contorno predeterminado que algunos navegadores añaden al enfoque */
+}
