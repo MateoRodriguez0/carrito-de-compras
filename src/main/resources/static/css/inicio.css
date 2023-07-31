@@ -73,3 +73,19 @@ header{
   border-color: white; /* Cambiar el color del borde cuando el campo está enfocado */
   outline: none; /* Quitar el contorno predeterminado que algunos navegadores añaden al enfoque */
 }
+#tipo{
+	margin-left: 150px;
+	height: 40px; 
+	width: 417px; 
+	border:2px solid white;
+	font-family:Helvetica;
+	background-color:  #243B55;
+	color: white;
+}
+
+label{
+	color: white;
+	right:155px;
+	position: relative;
+	font-family:Helvetica;
+}
