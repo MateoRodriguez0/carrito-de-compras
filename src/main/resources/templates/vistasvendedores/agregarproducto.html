@@ -35,13 +35,14 @@
 			
             <div class="col-md-4">
               <label for="validationCustom01" class="form-label">Nombre</label>
-              <input type="text" class="form-control" id="validationCustom01" th:field="*{nombre}" required="required">
+              <input placeholder="Nombre del articulo" type="text" class="form-control" id="validationCustom01" th:field="*{nombre}" required="required">
      
             </div>
 
             <div class="col-md-3">
               <label for="validationCustom04" class="form-label">Categoria</label>
-              <select class="form-select" id="validationCustom04" th:field="*{categoria}" required="required">
+              <select class="form-select" id="validationCustom04" required th:field="*{categoria}" >
+                <option selected disabled value="">selecciona una categoria</option>
                 <option  value="tecnologia">tecnologia</option>
                
               </select>
@@ -52,20 +53,20 @@
            
             <div class="mb-3">
               <label for="exampleFormControlTextarea1" class="form-label">Descripcion</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" th:field="*{descripcion}" required></textarea>
+              <textarea placeholder="Escribe una breve descripción del producto"  class="form-control" id="exampleFormControlTextarea1" rows="3" th:field="*{descripcion}" required></textarea>
             </div>
            
 
             <div class="col-md-4">
               <label for="validationCustom02" class="form-label" >Precio COP</label>
-              <input type="number" class="form-control" id="validationCustom02" min="0" th:field="*{precio}" required="required">
+              <input  placeholder="Precio del articulo en pesos colombianos" type="number" class="form-control" id="validationCustom02" min="0" th:field="*{precio}" required="required">
               <div class="valid-feedback">
                 
               </div> 
             </div>
             <div class="col-md-4">
               <label for="validationCustom02" class="form-label">Unidades disponibles</label>
-              <input type="text" class="form-control" id="validationCustom02" min="0" th:field="*{unidadesDisponibles}" required="required">
+              <input type="number" class="form-control" id="validationCustom02" min="0" th:field="*{unidadesDisponibles}" required="required">
           
               <div class="valid-feedback">
                 

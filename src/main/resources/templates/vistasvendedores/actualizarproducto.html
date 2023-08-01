@@ -35,13 +35,14 @@
           
             <div class="col-md-4">
               <label for="validationCustom01" class="form-label">Nombre</label>
-              <input type="text" class="form-control" id="validationCustom01" th:value="${productoActualizar.nombre}" th:field="*{nombre}" required>
+              <input placeholder="Nombre del articulo"  type="text" class="form-control" id="validationCustom01" th:value="${productoActualizar.nombre}" th:field="*{nombre}" required>
        
             </div>
 
             <div class="col-md-3">
               <label for="validationCustom04" class="form-label">Categoria</label>
               <select class="form-select" th:field="*{categoria}" id="validationCustom04" required>
+                <option selected disabled value="">selecciona una categoria</option>
                 <option value="Informatica" >Informatica </option>
               </select>
            
@@ -49,13 +50,13 @@
            
             <div class="mb-3">
               <label for="exampleFormControlTextarea1" class="form-label">Descripcion</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" th:value="${productoActualizar.descripcion}" th:field="*{descripcion}" rows="3"></textarea>
+              <textarea placeholder="Escribe una breve descripción del producto" class="form-control" id="exampleFormControlTextarea1" th:value="${productoActualizar.descripcion}" th:field="*{descripcion}" rows="3"></textarea>
             </div>
            
 
             <div class="col-md-4">
               <label for="validationCustom02" class="form-label">Precio COP</label>
-              <input type="number" class="form-control" id="validationCustom02" min="0" th:value="${productoActualizar.precio}"  th:field="*{precio}" required>
+              <input  placeholder="Precio del articulo en pesos colombianos"  type="number" class="form-control" id="validationCustom02" min="0" th:value="${productoActualizar.precio}"  th:field="*{precio}" required>
             
             </div>
             <div class="col-md-4">
