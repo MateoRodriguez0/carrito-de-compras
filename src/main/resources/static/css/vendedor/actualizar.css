@@ -1,0 +1,12 @@
+@charset "ISO-8859-1";
+
+.card-body{
+	
+}
+
+#exampleFormControlTextarea1{
+	resize: none;
+}
+#errores{
+	display: inline;
+}

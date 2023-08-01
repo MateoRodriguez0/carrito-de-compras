@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" type="text/css" th:href="@{/css/vendedor/listado.css}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+<meta charset="UTF-8">
+<title>Carrito de compras | mis productos</title>
+</head>
+<body>
+<header > 
+    <nav class="navbar" style="background-color: #243B55; color: white;">
+        <h1 class="h1" >este es el header</h1>
+      </nav>
+</header>
+
+<main role="main">
+<br>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+               <h2 class="h1"> Mis productos</h2>
+            </div>
+         
+          <div class="card-body">
+            <a th:href="@{/carritodecompras/vendedor/producto/nuevo}"><button type="button" class="btn btn-outline-primary">Nuevo producto</button></a> 
+            <hr>
+        
+            <div  th:if="${msj!=null}" class="alert alert-success alert-dismissible fade show" role="alert" >
+              <svg  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
+                <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+              </svg>
+              <div style="display: inline;" th:text="${msj}"></div>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+              <table class="table table-dark table-hover">
+                <thead >
+                  <tr>
+                    <th nowrap="nowrap"  scope="col">Id del producto</th>
+                    <th nowrap="nowrap"  scope="col">Nombre</th>
+                    <th nowrap="nowrap"  scope="col">Descripción</th>
+                    <th nowrap="nowrap"  scope="col">Categoria</th>
+                    <th nowrap="nowrap"  scope="col">Precio</th>
+                    <th nowrap="nowrap"  scope="col">Unidades disponibles</th>
+                    <th nowrap="nowrap"  scope="col" colspan="2" style="text-align: center;">Operaciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr th:each="producto: ${productos}" >
+                    <td th:text="${producto.id}"></td>
+                    <td th:text="${producto.nombre}"></td>
+                    <td th:text="${producto.descripcion}"></td>
+                    <td th:text="${producto.categoria}"></td>
+                    <td th:text="${producto.precio}"></td>
+                    <td th:text="${producto.unidadesDisponibles}"></td>
+                    <td >
+                      <a th:href="@{/carritodecompras/vendedor/producto/actualizar/{id}(id=${producto.id})}"><button type="button" class="btn btn-success">Actualizar</button></a>
+                      </td>
+                     <td >
+                      <a href=""><button type="button" class="btn btn-danger">Eliminar</button></a>
+                    </td>
+                  </tr>
+                </tbody>
+            </table>
+          </div>
+        </div>
+    </div><!--container-->
+  
+    <footer class="footer"> este es el footer</footer>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>

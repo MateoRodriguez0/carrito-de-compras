@@ -1,0 +1,18 @@
+@charset "ISO-8859-1";
+.card-body{
+	
+	background-color: #E3E3E3;
+}
+th{
+
+	height:60px;
+	text-align: center;
+	vertical-align: middle;
+	
+	
+}
+
+.alert alert-success alert-dismissible fade show{
+ 
+ display: inline;	
+}
