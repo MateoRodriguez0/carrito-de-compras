@@ -1,0 +1,22 @@
+@charset "ISO-8859-1";
+
+#tarjeta{
+	width:300px; 
+	height: 450px;
+	border: 2px solid #D9D9D9;
+}
+#imgproducto{
+	background-color:#C7C7C7;
+	height:250px; width:296px;
+}
+#btn-card{
+	display: block;
+}
+#btn-card::hover{
+	display: block;
+	background-color: #45F207;
+}
+#btn-card2{
+	display: block;
+	margin-top: 10px;
+}

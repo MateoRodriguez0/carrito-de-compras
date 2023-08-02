@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.carritodecompras.model.Producto;
@@ -44,6 +43,12 @@ public class VendedorController {
 		
 		return vistaagregar;
 	}
+	@GetMapping(value ="/principal")
+	public String principal(Producto producto) {
+		
+		return vistaprincipal;
+	}
+	
 	
 	@PostMapping(value ="/producto/agregar")
 	public String agregarProducto(@Valid Producto producto,BindingResult bindingResult,RedirectAttributes redirectAttributes) {
@@ -72,10 +77,12 @@ public class VendedorController {
 	private static final String listar="vistasvendedores/listado";
 	private static final String vistaactualizar="vistasvendedores/actualizarproducto";
 	private static final String vistaagregar="vistasvendedores/agregarproducto";
+	private static final String vistaprincipal="vistasvendedores/principal";
 	private static final String eliminar="redirect:/vistasvendedores/misproductos/";
 	private static final String listado="redirect:/carritodecompras/vendedor/misproductos";
 	private static final String msjAgregado="Se ha agregado un Nuevo producto al listado";
 	private static final String msjActualizado="Se ha actualizado un producto del listado ";
+	
 	@Autowired
 	private ProductosVendedorService productosVendedorService;
 }
