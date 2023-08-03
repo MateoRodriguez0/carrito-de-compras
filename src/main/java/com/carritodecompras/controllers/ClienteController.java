@@ -12,7 +12,7 @@ import com.carritodecompras.vendedor.services.ProductosVendedorService;
 @RequestMapping(value = "/carritodecompras/cliente")
 public class ClienteController {
 
-	@GetMapping( value = "/principal")
+	@GetMapping( value = "/")
 	public String principal(Model model) {;
 		model.addAttribute("productos", productosVendedorService.getProductos());
 		return principal;

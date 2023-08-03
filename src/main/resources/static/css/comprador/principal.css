@@ -12,10 +12,7 @@
 #btn-card{
 	display: block;
 }
-#btn-card::hover{
-	display: block;
-	background-color: #45F207;
-}
+
 #btn-card2{
 	display: block;
 	margin-top: 10px;

@@ -43,7 +43,7 @@ public class VendedorController {
 		
 		return vistaagregar;
 	}
-	@GetMapping(value ="/principal")
+	@GetMapping(value ="/")
 	public String principal(Producto producto) {
 		
 		return vistaprincipal;
