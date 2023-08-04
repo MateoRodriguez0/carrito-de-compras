@@ -73,7 +73,14 @@ public class VendedorController {
 		}
 		
 	}
+	@GetMapping( value = "/producto/detalles")
+	public String detallesdelPRoducto(Model model) {;
+		
+		return detallesProducto;
+	}
 	
+	
+	private static final String detallesProducto="vistasvendedores/detallesproducto";
 	private static final String listar="vistasvendedores/listado";
 	private static final String vistaactualizar="vistasvendedores/actualizarproducto";
 	private static final String vistaagregar="vistasvendedores/agregarproducto";

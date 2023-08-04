@@ -24,12 +24,39 @@ public class ClienteController {
 		return carrito;
 	}
 	
+	@GetMapping( value = "/producto/detalles")
+	public String detallesdelProducto(Model model) {;
+		
+		return vistadetallesProducto;
+	}
+	@GetMapping( value = "/producto/informacion")
+	public String informaciondelProducto(Model model) {;
+		
+		return vistainformacionProducto;
+	}
+	
+	@GetMapping( value = "/producto/agregar")
+	public String vistaAgregarAlCarrito(Model model) {;
+		
+		return vistaagregaralcarrito;
+	}
+	
+	@GetMapping( value = "/producto/actualizar")
+	public String vistaActualizar(Model model) {;
+		
+		return vistaactualizar;
+	}
+	
 	
 	
 	
 	
 	private static final String principal="vistascompradores/principal";
+	private static final String vistaagregaralcarrito="vistascompradores/agregaralcarrito";
+	private static final String vistaactualizar="vistascompradores/actualizar";
 	private static final String carrito="vistascompradores/carrito";
+	private static final String vistadetallesProducto="vistascompradores/detallesproducto";
+	private static final String vistainformacionProducto="vistascompradores/informacionproducto";
 	
 	@Autowired
 	private ProductosVendedorService productosVendedorService;

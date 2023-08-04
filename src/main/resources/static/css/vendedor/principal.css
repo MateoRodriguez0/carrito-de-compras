@@ -6,7 +6,7 @@
 	border: 2px solid #D9D9D9;
 }
 #imgproducto{
-	background-color:#C7C7C7;
+	background:linear-gradient(to right,#C7C7C7,#F0F2F0);
 	height:250px; width:296px;
 }
 #btn-card{
