@@ -32,5 +32,7 @@ tecnologias usadas:
 ![productos_tienda](https://github.com/mateorodriguez-byte/carrito-de-compras/assets/107595139/910f3638-697e-4ca2-9fd6-744507eb54c5)
 ![Captura de pantalla 2023-08-09 163845](https://github.com/mateorodriguez-byte/carrito-de-compras/assets/107595139/5994827f-adb3-4a7a-8bb6-e463c03da846)
 ![Captura de pantalla 2023-08-09 163953-4](https://github.com/mateorodriguez-byte/carrito-de-compras/assets/107595139/13baab0e-334a-4f66-94e6-61651a2e383f)
+![Captura de pantalla 2023-08-09 162454-3](https://github.com/mateorodriguez-byte/carrito-de-compras/assets/107595139/b612133d-a788-4378-b025-95c48fc6aff6)
+
 
 
