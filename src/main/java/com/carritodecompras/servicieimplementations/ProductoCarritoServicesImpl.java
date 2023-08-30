@@ -33,7 +33,7 @@ public class ProductoCarritoServicesImpl implements ProductoCarritoServices{
 
 	@Override
 	public void eliminarProducto(ProductoCarrito productoCarrito) {
-		
+		productoCarritoRepository.delete(productoCarrito);
 	}
 
 	@Override
