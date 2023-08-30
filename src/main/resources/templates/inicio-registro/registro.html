@@ -8,48 +8,127 @@
 </head>
 <body>
 
-<header> 
-<a th:href="@{/carritodecompras/}"><img class="logo" alt="carrito" th:src="@{/images/logo-home(oscuro).png}"></a>
-</header>
 
+	<header> 
 
-<div class="form-registro">
-<form action="" method="Get">
+		<a th:href="@{/carritodecompras/}"><img class="logo" alt="carrito" th:src="@{/images/logo-home(oscuro).png}"></a>
 
-<h1 class="h1" >Cuenta nueva</h1>
-	<br><br>
-		<input class="rounded-pill" id="Campodetexto" type="text" name="nombre" placeholder="nombre" size="43">
-	<br><br>
-		<input class="rounded-pill" id="Campodetexto"  type="text" name="usuario" placeholder="nombre de usuario" size="43">
-	<br><br>
-		<input class="rounded-pill" id="Campodetexto"  type="email" name="nombre" placeholder="correo electronico" size="43">
-	<br><br>
-		<input class="rounded-pill" id="Campodetexto"  type="password" name="clave" placeholder="contraseña" size="43">
-	<br><br>
-		<input class="rounded-pill" id="Campodetexto"  type="password" name="clave" placeholder="verificacion de contraseña" size="43">
-	<br><br>
-		<input class="rounded-pill" id="Campodetexto"  type="text" name="telefono" placeholder="Telefono" size="43">
-	<br><br>
-		<input  class="rounded-pill"  type="date" id="especial" name="fechanacimiento" placeholder="fecha de nacimiento" height="40px" >
-	<br><br>
-	<label >Seleccione un tipo de cuenta</label>
-		<select class="form-select form-select-sm rounded-pill" id="tipo" >
-			  <option selected value="1">Comprador</option>
-			  <option value="2">Vendedor</option>
-			  
-		</select>
-	<br><br>
-		<input class="btn btn-outline-primary rounded-pill" type="submit" value="Crear cuenta"  id="crear" >
-</form>
-<br><br>
-<h5 id="tienes-cuenta" >Ya tienes una cuenta? <a th:href="@{/carritodecompras/inicio}" class="link-offset-2 link-underline link-underline-opacity-0"> iniciar sesion</a> </h5>
-</div>
-
-<img id="ilustracion" th:src="@{/images/ilustracion registro.svg}">
+	</header>
 
 
 
-<footer th:insert="~{/fragmentos/footer.html::footer-inicio-registro-principal}"></footer>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+	<div class="form-registro">
+
+		<form th:action="@{registro}" method="Post" th:object="${usuario}">
+            
+			<h1 class="h1" >Cuenta nueva</h1>
+	
+			<br>
+			<div  th:if="${msjEmailExistente !=null}" id="msj-correo-existente" class="alert alert-danger alert-dismissible fade show" role="alert"> 
+		        <p id="msj-CE" th:text="${msjEmailExistente}"></p>
+	            <button  type="button" class="btn-close" data-bs-dismiss="alert" id="btn-cerrar-email" aria-label="Close"></button>
+           	</div > 
+			<br>
+			
+			
+			<div class="container-input">
+		
+				<input class="rounded-pill" id="Campodetexto" type="text" th:field="*{nombre}" name="nombre" placeholder="nombre" size="43">
+		
+				<div class="img" th:if="${#fields.hasErrors('*') || usuario.nombre!=null}">
+					<img th:if="${#fields.hasErrors('nombre')}" th:src="@{/images/advertencia-de-triangulo.png}" alt="26px">
+					<img th:unless="${#fields.hasErrors('nombre')}" th:src="@{/images/marque-el-circulo.png}" alt="26px">
+				</div>
+			</div>
+			<br>
+	
+			
+			<div class="container-input">
+				<input class="rounded-pill" id="Campodetexto"  type="text" th:field="*{nombreUsuario}"  placeholder="nombre de usuario" size="43">
+				<div class="img" th:if="${#fields.hasErrors('*') || usuario.nombre!=null}">
+					<img th:if="${#fields.hasErrors('nombreUsuario')}" th:src="@{/images/advertencia-de-triangulo.png}" alt="26px">
+					<img th:unless="${#fields.hasErrors('nombreUsuario')}" th:src="@{/images/marque-el-circulo.png}" alt="26px">
+				</div>
+			
+				
+			</div>
+			<br>
+
+			<div class="container-input">
+				<input class="rounded-pill" id="Campodetexto"  type="email" th:field="*{correoElectronico}"  placeholder="correo electronico" size="43">				
+			
+				<div class="img" th:if="${#fields.hasErrors('*') || usuario.correoElectronico!=null}">
+					<img th:if="${#fields.hasErrors('correoElectronico') || msjEmailExistente !=null }" th:src="@{/images/advertencia-de-triangulo.png}" alt="26px">
+					<img th:unless="${#fields.hasErrors('correoElectronico') || msjEmailExistente !=null }" th:src="@{/images/marque-el-circulo.png}" alt="26px">
+				</div>
+				
+			</div>
+
+			
+			<br>
+			<div class="container-input">
+				<input class="rounded-pill" id="Campodetexto"  type="password"  th:field="*{password}"  placeholder="contraseña"  size="43">	
+				<div class="img" th:if="${#fields.hasErrors('*')}">
+					<img th:if="${#fields.hasErrors('password') || usuario.password==null} " th:src="@{/images/advertencia-de-triangulo.png}" alt="26px">
+					
+				</div>
+			</div>
+			<br>
+
+			<div class="container-input">
+				<input class="rounded-pill" id="Campodetexto"  type="password"  th:field="*{passwordValid}" placeholder="verificacion de contraseña" size="43" >
+				<div class="img" th:if="${#fields.hasErrors('*') ||usuario.passwordValid !=null} ">
+					<img th:if="${#fields.hasErrors('passwordValid') || usuario.validPasword==false}" th:src="@{/images/advertencia-de-triangulo.png}" alt="26px">
+					
+				</div>
+			</div>
+			<br>
+			
+			<div class="container-input" >
+				<input class="rounded-pill" id="Campodetexto"  type="text" th:field="*{telefono}" placeholder="Telefono" size="43">		
+				<div class="img" th:if="${#fields.hasErrors('*') || usuario.telefono!=null}">
+					<img th:if="${#fields.hasErrors('telefono')}" th:src="@{/images/advertencia-de-triangulo.png}" alt="26px">
+					<img th:unless="${#fields.hasErrors('telefono')}" th:src="@{/images/marque-el-circulo.png}" alt="26px">
+				</div>
+			</div>
+			<br>
+
+			<div class="container-input">
+				<input  class="rounded-pill"  type="date" id="especial"  th:field="*{fechaDeNacimiento}" placeholder="fecha de nacimiento" height="40px" >
+				<div class="img" th:if="${#fields.hasErrors('*') || usuario.fechaDeNacimiento!=null}">
+					<img th:if="${#fields.hasErrors('fechaDeNacimiento')|| !usuario.esMayordeEdad()}" th:src="@{/images/advertencia-de-triangulo.png}" alt="26px">
+					<img th:unless="${#fields.hasErrors('fechaDeNacimiento')|| !usuario.esMayordeEdad()}" th:src="@{/images/marque-el-circulo.png}" alt="26px">
+				</div>
+			
+			</div>
+			<br>
+
+			<label >Seleccione un tipo de cuenta</label>
+			<div class="container-input">
+				<select class="form-select form-select-sm rounded-pill" id="tipo" th:field="*{rol.id}" >
+					<option th:each="rol: ${roles}" selected th:value="${rol.id}"  th:text="${rol.nombre}"></option>
+				</select>
+				
+			</div>
+			<br>
+
+			<div class="container-input">
+				<input class="btn btn-outline-primary rounded-pill" type="submit" value="Crear cuenta"  id="crear" >
+			</div>
+				
+			</form>
+
+			<br>
+			<h5 id="tienes-cuenta" >Ya tienes una cuenta? <a th:href="@{/carritodecompras/inicio}" class="link-offset-2 link-underline link-underline-opacity-0"> iniciar sesion</a> </h5>
+		
+		</div>
+
+		<img id="ilustracion" th:src="@{/images/ilustracion registro.svg}">
+
+		<footer th:insert="~{/fragmentos/footer.html::footer-inicio-registro-principal}"></footer>
+
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+
 </body>
 </html>

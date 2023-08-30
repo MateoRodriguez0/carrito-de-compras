@@ -21,7 +21,9 @@ th{
 	 justify-content: center;
 }
 #msj{
-	display: inline;
+	position: relative;
+	top: 3%;
+	
 }
 
 #card-principal{
@@ -29,4 +31,9 @@ th{
 }
 #operaciones{
 	text-align: center;
+}
+
+#msj-actualizado{
+	
+	color: rgb(15, 126, 57);
 }

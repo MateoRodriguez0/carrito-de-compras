@@ -27,19 +27,20 @@ footer{
 	position: absolute;
 	align-items: center;
 	width: 800px;
+	top: 50px;
 }   
 .h1{
 	font-size:50px;
 	
 }
 #tienes-cuenta{
-	right:50px;
+	right:40px;
 	position: relative;
 
 }
 
 #especial,#crear{
-	width:410px;
+	width:418px;
 	height:40px;
 	
 }
@@ -71,9 +72,9 @@ header{
 }
 
 #tipo{
-	margin-left: 200px;
+	
 	height: 40px; 
-	width: 410px; 
+	width: 418px; 
 	border:2px solid #243B55;
 	font-family:Helvetica;
 }
@@ -82,4 +83,45 @@ label{
 	right:90px;
 	position: relative;
 	font-family:Helvetica;
+}
+
+.container-input{
+	display: flex;
+
+}
+
+
+#Campodetexto,#especial,#tipo,#crear{
+position: relative;
+left: 25%;
+
+}
+.img{
+	position: relative;
+	left: 26%;
+	margin-top:0.8%;
+}
+
+#msj-correo-existente{
+	display: flex;
+	position: relative;
+	left: 26%;
+	height: 40px;
+	width: 50%;
+	text-align: left;
+	top: 10px;
+	vertical-align: middle;
+}
+
+#msj-CE{
+	position: relative;
+	bottom: 10px;
+	
+	
+}
+
+#btn-cerrar-email{
+	
+	height: 1%;
+	
 }

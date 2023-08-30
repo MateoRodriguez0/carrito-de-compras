@@ -16,10 +16,9 @@
           <h2 class="h1">Actualizar datos del producto  <img th:src="@{/images/actualizar.png}"> </h2>
         </div>
         <div class="card-body"> 
-          <form class="row g-3 needs-validation" th:object="${productoActualizar}" th:action="@{/carritodecompras/vendedor/producto/actualizado}" method="Post" novalidate>
+          <form class="row g-3 needs-validation" th:object="${productoActualizar}" th:action="@{/carritodecompras/vendedor/producto/actualizado}" method="Post" >
           
-             <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger alert-dismissible fade show" role="alert">
-	            por favor corrija los siguientes errores:  
+            <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger alert-dismissible fade show" role="alert"> 
 		        <ul >
 		           <li th:each="error : ${#fields.errors('*')}" th:text="${error}"></li>
 		        </ul>
@@ -27,6 +26,7 @@
             </div >
           
             <div class="col-md-4">
+              <input type="hidden" th:field="${productoActualizar.id}">
               <label for="validationCustom01" class="form-label">Nombre</label>
               <input placeholder="Nombre del articulo"  type="text" class="form-control" id="validationCustom01" th:value="${productoActualizar.nombre}" th:field="*{nombre}" required>
        
@@ -34,9 +34,9 @@
 
             <div class="col-md-3">
               <label for="validationCustom04" class="form-label">Categoria</label>
-              <select class="form-select" th:field="*{categoria}" id="validationCustom04" required>
-                <option selected disabled value="">selecciona una categoria</option>
-                <option value="Informatica" >Informatica </option>
+              <select class="form-select" th:field="*{categoria.id}" id="validationCustom04" required>
+                
+                <option th:each="categoria: ${categorias}" th:value="${categoria.id}" th:field="*{categoria.id}" th:text="${categoria.nombre}" ></option>
               </select>
            
             </div>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<link rel="stylesheet" th:href="@{/css/comprador/eliminar.css}">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+	<meta charset="ISO-8859-1">
+	<title>Carrito de compras | Agregar al carrito</title>
+</head>
+<body>
+	<header th:insert="~{/fragmentos/headercliente.html::header}" > </header>
+	
+	<main role="main">
+		<div class="container">
+			<div class="card" id="card_principal">
+				<div class="card-header">
+					<h4 class="h3" id="title">Eliminar este producto del carrito</h4>
+				</div>
+				<div class="card-body" style="display: block;">
+					<form th:action="@{/carritodecompras/cliente/elcarrito/eliminar}" th:object="${productoEliminar}">
+						<input type="hidden" th:field="*{id}" id="">
+						<div>
+							<img th:src="@{\images\eliminar-producto.png}" class="img">
+						</div>
+						<div class="div-info">
+							<h5 class="card-title" th:text="${productoEliminar.productoStock.nombre}"></h5>
+							<hr>
+							<p class="card-text" th:text="${productoEliminar.productoStock.descripcion}"></p>
+							<p class="card-text">Precio: <strong th:text="${productoEliminar.productoStock.precio}"></strong></p>
+							
+							<div class="div-cantidad">
+								<p  >Cantidad seleccionada: <strong th:text="${productoEliminar.cantidadSeleccionada}"></strong></p>
+							</div>
+						</div>
+	
+						<div class="div-btn">
+							<input type="submit"  class="btn btn-outline-danger rounded-pill" id="agregaralcarrito" value="Eliminar">
+						</div>
+					</form>
+					
+
+					
+				</div>
+			</div>
+		</div>
+
+	</main>
+<br>
+<footer th:insert="~{\fragmentos\footertienda.html::footer-tienda}"></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+@charset "ISO-8859-1";
+
+#card_principal{
+    margin-top:3%;
+    width: 40%;
+    left: 30%;
+}
+
+#card-body{
+	align-items: center;
+	
+}
+.img{
+    position: relative;
+    width: 40%;
+    left: 30%;
+    margin-top:5%;
+}
+
+.div-info{
+    position: relative;
+    margin-top: 5%;
+   
+}
+.h3{
+    text-align: center;
+}
+.card-title{
+    text-align: center;
+}
+
+.div-info{
+   width: 80%;
+   left: 10%;
+}
+.div-btn{
+    position: relative;
+    
+}
+
+.div-cantidad{
+    display: inline-block;
+}
+.select{
+    display: inline-block;
+
+}
+#agregaralcarrito{
+    margin-top: 5%;
+    margin-bottom: 4%;
+    position: relative;
+    left: 23%;
+    width: 54%
+}
+

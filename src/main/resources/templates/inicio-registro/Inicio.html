@@ -8,41 +8,67 @@
 <title>Carrito de compras | inicio de sesion</title>
 </head>
 <body>
-<header> 
-<a th:href="@{/carritodecompras/}"><img class="logo" alt="carrito" th:src="@{/images/logo-home.png}" ></a>
-
-</header>
-
-
-<div class="formulario-inicio">
-<form action="" method="post">
-
-<h1 class="h1" >Inicio de sesion</h1>
-	<br><br><br>
-	
-	<label >Iniciar como</label>
-		<select class="form-select form-select-sm rounded-pill " id="tipo" >
-			  <option selected value="1">Comprador</option>
-			  <option value="2">Vendedor</option>
-			  
-		</select>
+	<header> 
+		<a th:href="@{/carritodecompras/}"><img class="logo" alt="carrito" th:src="@{/images/logo-home.png}" ></a>
 		
-	<br>
-		<input class="rounded-pill" id="Campodetexto" type="email" name="email" placeholder="correo electronico" size="43">
-	<br><br>
-		<input class="rounded-pill" id="Campodetexto" type="password" name="clave" placeholder="contraseña" size="43">
-	<br><br><br>
-		<input class="btn btn-outline-primary rounded-pill" type="submit" value="Iniciar sesion"  id="especial" >
-</form>
-<br><br>
-<h5 id="no-tienes-cuenta" >No tienes cuenta aun? <a th:href="@{/carritodecompras/registro}" class="link-offset-2 link-underline link-underline-opacity-0">Crear cuenta nueva</a> </h5>
-</div>
+	</header>
 
-<img id="ilustracion"  th:src="@{/images/ilustracion inicio.svg}">
+	<div th:if="${msjcuentacreada !=null}" class="alert alert-success alert-dismissible fade show" role="alert"  id="msj-registro"> 
+		<h2 th:text="${msjcuentacreada}"></h2>
 
-<footer th:insert="~{/fragmentos/footer.html::footer-inicio-registro-principal}"></footer>
+		<button  type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div >
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+	<div class="formulario-inicio">
+		
+		<form th:action="@{inicio}" method="post" th:object="${usuario}">
+
+			
+			<h1 class="h1" >Inicio de sesion</h1>
+			<br><br><br>
+			
+			<div class=" selecion-tipo-cuenta">
+
+				
+				<div class="c-option">
+					<select class="form-select form-select-sm rounded-pill custom-select" id="tipo" th:field="*{rol.id}" >
+						<option th:each="rol: ${roles}" selected th:value="${rol.id}"  th:text="${rol.nombre}"></option>
+							
+					</select>
+				</div>
+
+			</div>
+	
+			
+			<div>
+				<input class="rounded-pill" id="Campodetexto" type="email" th:field="*{correoElectronico}"  placeholder="correo electronico" >
+			<br><br>
+
+			<input class="rounded-pill" id="Campodetexto" type="password" th:field="*{password}"  placeholder="contraseña" >
+			<br><br><br>
+			<input class="btn btn-outline-primary rounded-pill" type="submit" value="Iniciar sesion"  id="especial" >
+
+			</div>
+			<br>
+	
+			
+
+		</form>
+
+		<br><br>
+
+		<h5 id="no-tienes-cuenta" >No tienes cuenta aun? <a th:href="@{/carritodecompras/registro}" class="link-offset-2 link-underline link-underline-opacity-0">Crear cuenta nueva</a> </h5>
+
+	</div>
+
+
+	<img id="ilustracion"  th:src="@{/images/ilustracion inicio.svg}">
+
+
+	<footer th:insert="~{/fragmentos/footer.html::footer-inicio-registro-principal}"></footer>
+
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
 </body>
 </html>

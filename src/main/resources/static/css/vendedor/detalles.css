@@ -1,0 +1,31 @@
+@charset "ISO-8859-1";
+strong,hr,#parrafo,#titulo{
+    color: white;
+    
+}
+.col-md-3{
+background-color: white;
+}
+.card-body{
+    background:linear-gradient(to right,#141E30,#243B55);
+}
+.btn-agregar{
+    
+    display: inline-block; 
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+#div-img{
+    display: flex; 
+    align-items: center;
+    background:linear-gradient(to right,#C7C7C7,#F0F2F0);
+}
+.txt-normal{
+    font-weight: normal;
+    }
+    
+#card_principal{
+    margin-top:3%;
+}

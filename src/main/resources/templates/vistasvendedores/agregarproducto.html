@@ -18,10 +18,9 @@
         
         <div class="card-body" > 
           
-          <form th:action="@{/carritodecompras/vendedor/producto/agregar}" method="POST" th:object="${producto}" class="row g-3 needs-validation" novalidate>
+          <form th:action="@{/carritodecompras/vendedor/producto/agregar}" method="POST" th:object="${productoStock}" class="row g-3 needs-validation" novalidate>
 	         
-            <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger alert-dismissible fade show" role="alert">
-	            por favor corrija los siguientes errores:  
+            <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger alert-dismissible fade show" role="alert"> 
 		        <ul >
 		           <li th:each="error : ${#fields.errors('*')}" th:text="${error}"></li>
 		        </ul>
@@ -36,9 +35,9 @@
 
             <div class="col-md-3">
               <label for="validationCustom04" class="form-label">Categoria</label>
-              <select class="form-select" id="validationCustom04" required th:field="*{categoria}" >
-                <option selected disabled value="">selecciona una categoria</option>
-                <option  value="tecnologia">tecnologia</option>
+              <select class="form-select" id="validationCustom04" required th:field="*{categoria.id}" >
+                <option selected disabled="disabled" th:value="${null}">selecciona una categoria</option>
+                <option th:each="categoria: ${categorias}" th:value="${categoria.id}" th:text="${categoria.nombre}"></option>
                
               </select>
               <div class="invalid-feedback">
@@ -47,7 +46,7 @@
             </div>
            
             <div class="mb-3">
-              <label for="exampleFormControlTextarea1" class="form-label">Descripcion</label>
+              <label for="exampleFormControlTextarea1" class="form-label">Descripción</label>
               <textarea placeholder="Escribe una breve descripción del producto"  class="form-control" id="exampleFormControlTextarea1" rows="3" th:field="*{descripcion}" required></textarea>
             </div>
            

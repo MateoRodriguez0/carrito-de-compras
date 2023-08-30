@@ -25,10 +25,10 @@
                                     <h5 class="card-title" th:text="'$ '+${producto.precio}"></h5>  
                                     
                                     <div>
-                                        <a th:href="@{/carritodecompras/cliente/producto/informacion}"  id="btn-card"   class="btn btn-outline-secondary rounded-pill">Informacion</a>
+                                        <a th:href="@{/carritodecompras/cliente/producto/{id}/informacion(id=${producto.id})}"  id="btn-card"   class="btn btn-outline-secondary rounded-pill">Informacion</a>
                                     </div>
                                     <div>
-                                        <a th:href="@{/carritodecompras/cliente/producto/agregar}" id="btn-card2" class="btn btn-outline-primary rounded-pill">Agregar al carrito</a>
+                                        <a th:href="@{/carritodecompras/cliente/producto/agregar/{id} (id=${producto.id})}" id="btn-card2" class="btn btn-outline-primary rounded-pill">Agregar al carrito</a>
                                     </div>
   
                                 </div>

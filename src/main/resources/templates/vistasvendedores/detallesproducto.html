@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" th:href="@{/css/vendedor/detalles.css}">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+<meta charset="UTF-8">
+<title>Carrito de compras | Informacion de Productos</title>
+</head>
+<body>
+	<header th:insert="~{/fragmentos/headervendedor.html::header}" > </header>
+	<main role="main">
+		<div class="container">
+			<div class="card" id="card_principal">
+				<div class="card-header">
+					<div style="display: inline-block">
+						<h3 class="h3"> Información sobre este producto</h3>
+					</div>
+				
+				</div>
+				<div class="card-body" >
+					<div class="row">
+						<div class="col-md-3" id="div-img">
+							<img th:src="@{/images/etiquetaprecio.png}">
+						</div>
+						<div class="col-md-9">
+							<h6  id="titulo" class="card-title h4" th:text="${productoInfo.nombre}" > NOMBRE DEL PRODUCTO</h6>	
+							<p id="parrafo" th:text="${productoInfo.descripcion}"></p>
+							<hr style="color: white;">
+							<p id="parrafo">Precio: 
+								<strong class="h6" th:text="${'$ '+ productoInfo.precio+' COP'}" > </strong>
+							</p>
+							<p id="parrafo" >
+								<strong class="h6">Categoria: </strong><span class="txt-normal" th:text="${productoInfo.categoria.nombre}"></span>
+							</p>
+							<p id="parrafo" >
+								<strong class="h6" >Unidades disponible: </strong>
+								<span class="txt-normal"  th:text="${productoInfo.unidadesDisponibles}">dssd</span>
+							</p>
+							
+							<hr style="color: white;">
+							<h6  id="titulo" class="card-title h4" >Detalles del producto</h6>
+							<p id="parrafo">
+								<strong>Publicado por:</strong>
+								<span class="txt-normal" th:text="${productoInfo.vendedor.nombre}" ></span>
+							</p>
+							<p id="parrafo" >
+								<strong >Fecha de publicación: </strong>
+								<span class="txt-normal" th:text="${productoInfo.fechaDePublicacion}"></span>
+							</p>
+							<hr style="color: white;">
+		
+							<p id="parrafo">
+								<strong class="h6">Garantia </strong> 
+								30 días para la devolución. El comprador paga por la devolución del artículo.
+							</p>
+							
+							<p id="parrafo">
+								<strong class="h6">Devolución gratis. </strong>
+								Tienes 30 días desde que lo recibes.									
+							</p>
+							<p id="parrafo">
+									<strong class="h6">Compra Protegida </strong>
+									Si no recibe el producto que esperabas o te devolvemos tu dinero.
+							</p>
+		
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+<br>
+<footer th:insert="~{\fragmentos\footertiendafijo.html::footer-tienda}"></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>

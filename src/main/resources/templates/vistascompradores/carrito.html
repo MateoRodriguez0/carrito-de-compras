@@ -13,53 +13,54 @@
 <main role="main">
 <br>
     <div class="container">
+      
         <div class="card" id="card-principal" >
             <div class="card-header">
                <h2 class="h1">Mi carrito de compras</h2>
             </div>
-         
-          <div class="card-body">
-            <a th:href="@{/carritodecompras/cliente/}"><button type="button" class="btn btn-outline-primary">Ir de compras</button></a> 
-            <hr>
+            
+            <div class="card-body">
+              <a th:href="@{/carritodecompras/cliente/}"><button type="button" class="btn btn-outline-primary">Ir de compras</button></a> 
+            
+              <div th:if="${msjActualizado !=null}" class="alert alert-success alert-dismissible fade show" id="msj" role="alert">
+                <h5 id="msj-actualizado" th:text="${msjActualizado}"></h5> 
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+              <hr>
 
-            <div  th:if="${msj!=null}" class="alert alert-success alert-dismissible fade show" role="alert" >
-              <svg  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
-                <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
-              </svg>
-              <div id="msj" th:text="${msj}"></div>
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-              <table class="table table-dark table-hover">
+              <table class="table table-dark table-hover"> 
                 <thead >
                   <tr>
-                    <th nowrap="nowrap"  scope="col">Id. Posible compra</th>
-                    <th nowrap="nowrap"  scope="col">Nombre</th>
-                    <th nowrap="nowrap"  scope="col">Precio</th>
-                    <th nowrap="nowrap"  scope="col" colspan="1" >cantidad seleccionada</th>
+                    <th nowrap="nowrap"  scope="col">Id. Posible compra</th> 
+                    <th nowrap="nowrap"  scope="col">Nombre</th> 
+                    <th nowrap="nowrap"  scope="col">Precio</th>    
+                    <th nowrap="nowrap"  scope="col" colspan="1" >cantidad seleccionada</th>    
                     <th nowrap="nowrap"  scope="col" colspan="3" id="operaciones" >Operaciones</th>
                   </tr>
                 </thead>
-                <tbody>
-                	<tr>
-                    <td>12322</td>
-                    <td>computador</td>
-                    <td>5000000</td>
-                    <td>1</td>
-                	  <td>
-                      <a th:href="@{/carritodecompras/cliente/producto/actualizar}"><button type="button" class="btn btn-outline-success">Actualizar</button></a>
-                	  </td>
-                    <td >
-                      <a ><button type="button" class="btn btn-outline-danger">Eliminar   </button></a>
-                    </td>
-                    <td >
-                      <a th:href="@{/carritodecompras/cliente/producto/detalles}" ><button type="button" class="btn btn-outline-warning">Detalles</button></a>
-                    </td>
+                
+                <tbody>	
+                  <tr th:each="productoCarrito: ${ProductosCarrito}"> 
+                    <td th:text="${productoCarrito.id}"></td>
+                    <td th:text="${productoCarrito.productoStock.nombre}"></td>
+                    <td th:text="${productoCarrito.productoStock.precio}"></td>   
+                    <td th:text="${productoCarrito.cantidadSeleccionada}"></td>                	
+                    <td>  
+                      <a th:href="@{/carritodecompras/cliente/elcarrito/actualizar/{id} (id=${productoCarrito.id})}"><button type="button" class="btn btn-outline-success">Actualizar</button></a>
+                    </td>                   
+                    <td > 
+                      <a  th:href="@{/carritodecompras/cliente/elcarrito/{id}/eliminar(id=${productoCarrito.id})}"><button type="button" class="btn btn-outline-danger" >Eliminar</button></a> 
+                    </td>                   
+                    <td >                      
+                      <a th:href="@{/carritodecompras/cliente/elcarrito/{id}/informacion (id=${productoCarrito.productoStock.id})}" ><button type="button" class="btn btn-outline-warning">Informacion</button></a>                   
+                    </td>                  
                   </tr>
                 </tbody>
-            </table>
-          </div>
+
+              </table>         
+          </div>  
         </div>
-    </div><!--container-->
+      </div><!--container-->
 </main>
 <br>
 <footer th:insert="~{\fragmentos\footertienda.html::footer-tienda}"></footer>
