@@ -26,7 +26,6 @@ tecnologias usadas:
 - Spring Framework
 - thymeleaf
 - Boostrap framework
-- Hibernate ORM
 - Hibernate Validator
 - Mysql
 - Hibernate ORM o JPA
