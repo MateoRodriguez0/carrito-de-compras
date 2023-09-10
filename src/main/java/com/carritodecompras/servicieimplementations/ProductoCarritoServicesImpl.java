@@ -28,7 +28,7 @@ public class ProductoCarritoServicesImpl implements ProductoCarritoServices{
 
 	@Override
 	public void guardarProducto(ProductoCarrito productoCarrito) {
-
+		productoCarritoRepository.save(productoCarrito);
 	}
 
 	@Override

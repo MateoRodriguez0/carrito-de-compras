@@ -8,7 +8,7 @@
 <title>Carrito de compras | mis productos</title>
 </head>
 <body>
-<header th:insert="~{/fragmentos/headervendedor.html::header}" > </header>
+	<header th:insert="~{/fragmentos/headertienda.html::header}" > </header>
 
 <main role="main">
 <br>
@@ -50,7 +50,7 @@
                     <td th:text="${producto.unidadesDisponibles}"></td>
                     <td th:text="${producto.fechaDePublicacion}"></td>
                     <td >
-                      <a th:href="@{/carritodecompras/vendedor/producto/{id}/detalles (id=${producto.id})}"><button type="button" class="btn btn-outline-warning">Información</button></a>
+                      <a th:href="@{/carritodecompras/producto/{id}/informacion (id=${producto.id})}"><button type="button" class="btn btn-outline-warning">Información</button></a>
                     </td>
                     <td >
                       <a th:href="@{/carritodecompras/vendedor/producto/eliminar/{id} (id=${producto.id})}"><button type="button" class="btn btn-outline-danger  confirmar" >Eliminar</button></a>

@@ -16,3 +16,8 @@
 	display: block;
 	
 }
+
+#por-precio{
+	position: relative;
+	top: 45%;
+}

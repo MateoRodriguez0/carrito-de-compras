@@ -6,8 +6,11 @@
 	border: 2px solid #D9D9D9;
 }
 #imgproducto{
-	background:linear-gradient(to right,#C7C7C7,#F0F2F0);
-	height:250px; width:296px;
+	position: relative;
+	left: 15%;
+	height: 80%;
+	width: 70%;
+	top: 10%;
 }
 #btn-card{
 	display: block;
@@ -17,4 +20,32 @@
 	display: block;
 	margin-top: 10px;
 	width: 265px;
+}
+
+#card-p{
+	position: relative;
+	margin-top: 2%;
+}
+
+#card-filtrado{
+	position: relative;
+	margin-top: 3%;
+	width: 100%;
+}
+
+#menu-opciones{
+	position: relative; 
+	margin-top: 5%;
+}
+
+#ordenar{
+	padding-left: 2%;
+}
+
+#nombre-producto{
+	font-size: 100%;
+}
+
+#header-producto{
+	height: 55%;
 }

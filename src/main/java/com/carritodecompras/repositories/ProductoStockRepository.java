@@ -4,7 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.carritodecompras.model.Categoria;
 import com.carritodecompras.model.ProductoStock;
-import com.carritodecompras.model.Usuario;
 
 import java.util.List;
 
@@ -23,6 +22,4 @@ public interface ProductoStockRepository extends JpaRepository<ProductoStock, Lo
 	
 	List<ProductoStock> findByPrecioBetween(Double min,Double max);
 	
-	
-	List<ProductoStock> findByVendedor(Usuario vendedor);
 }

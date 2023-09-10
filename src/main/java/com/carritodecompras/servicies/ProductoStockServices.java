@@ -2,7 +2,9 @@ package com.carritodecompras.servicies;
 
 import java.util.List;
 
-import com.carritodecompras.model.Categoria;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import com.carritodecompras.model.ProductoStock;
 
 /**
@@ -28,8 +30,8 @@ public interface ProductoStockServices {
 	 * @return lista de ProductoStock.
 	 */
 	public List<ProductoStock> getProductos();
-	
-	public List<ProductoStock> getProductosByVendedor(Long id);
+
+	public Page<ProductoStock> getProductos(Pageable pageable);
 	
 	public void guardarProducto(ProductoStock productoStock);
 	
@@ -58,7 +60,7 @@ public interface ProductoStockServices {
 	 * @param categoria sera el predicado para realizar el filtrado.
 	 * @return
 	 */
-	public List<ProductoStock> porCategoria(Categoria categoria);
+	public List<ProductoStock> porCategoria(Long id);
 	
 	
 	/**
@@ -69,6 +71,11 @@ public interface ProductoStockServices {
 	 */
 	public List<ProductoStock> porRangoDePrecios(Double min, Double Max);
 	
+	public List<ProductoStock> porFechaDepublicacion();
+	public List<ProductoStock> porCantidadDisponible();
 	
+	public List<ProductoStock> porPrecioMenorA(Double precio);
+	public List<ProductoStock> porPrecioMayorA(Double precio);
+
 	
 }

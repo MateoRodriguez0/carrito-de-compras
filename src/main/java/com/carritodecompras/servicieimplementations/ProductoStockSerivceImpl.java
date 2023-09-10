@@ -1,17 +1,20 @@
 package com.carritodecompras.servicieimplementations;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.carritodecompras.model.Categoria;
 import com.carritodecompras.model.ProductoStock;
-import com.carritodecompras.model.Usuario;
 import com.carritodecompras.repositories.ProductoStockRepository;
-import com.carritodecompras.repositories.UsuarioRepository;
+import com.carritodecompras.servicies.CategoriaServices;
 import com.carritodecompras.servicies.ProductoStockServices;
 
 @Service
@@ -61,12 +64,14 @@ public class ProductoStockSerivceImpl implements ProductoStockServices {
 		return productoStockRepository.findAll(Sort.by(Direction.DESC,"precio"));
 	}
 
+
+
 	@Override
-	public List<ProductoStock> porCategoria(Categoria categoria) {
+	public List<ProductoStock> porCategoria(Long id) {
+		Categoria categoria= categoriaServices.getById(id);
 		
 		return productoStockRepository.findByCategoria(categoria);
 	}
-
 	@Override
 	public List<ProductoStock> porRangoDePrecios(Double min, Double Max) {
 		
@@ -74,22 +79,60 @@ public class ProductoStockSerivceImpl implements ProductoStockServices {
 	}
 	
 	
-	
-	@Autowired
-	private UsuarioRepository usuarioRepository;
 	@Override
-	public List<ProductoStock> getProductosByVendedor(Long id) {
+	public Page<ProductoStock> getProductos(Pageable pageable) {
 		
-		Usuario vendedor= usuarioRepository
-				.findById(id)
-				.orElse(null);
-		
-		return productoStockRepository.findByVendedor(vendedor);
+		return productoStockRepository.findAll(pageable);
 	}
+
+	
+
+	@Override
+	public List<ProductoStock> porFechaDepublicacion() {
+		
+		return productoStockRepository.findAll(Sort.by(Direction.DESC, "fechaDePublicacion"));
+	}
+
+	
+	@Override
+	public List<ProductoStock> porCantidadDisponible() {
+		
+		return productoStockRepository.findAll(Sort.by(Direction.DESC, "unidadesDisponibles"));
+	}
+	
+
+
+	@Override
+	public List<ProductoStock> porPrecioMenorA(Double precio) {
+		
+		return productoStockRepository.findAll()
+				.stream()
+				.filter(P -> P.getPrecio()<=precio)
+				.collect(Collectors.toCollection(ArrayList::new));
+	}
+
+	
+	@Override
+	public List<ProductoStock> porPrecioMayorA(Double precio) {
+		
+		return productoStockRepository.findAll()
+				.stream()
+				.filter(P -> P.getPrecio()>=precio)
+				.collect(Collectors.toCollection(ArrayList::new));
+	}
+	
+
+	
+	
 	
 	
 	@Autowired
 	private ProductoStockRepository productoStockRepository;
+
+
+	@Autowired
+	private CategoriaServices categoriaServices;
+
 
 
 }

@@ -11,4 +11,7 @@ public interface CategoriaServices {
 	 * @return lista de categorias.
 	 */
 	public List<Categoria> getCategoriasAsc();
+	
+	
+	Categoria getById(Long id);
 }

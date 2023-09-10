@@ -1,7 +1,4 @@
 package com.carritodecompras.controllers;
-
-
-
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,19 +30,8 @@ import com.carritodecompras.servicies.ProductoStockServices;
 @RequestMapping(value = "/carritodecompras/cliente")
 public class ClienteController {
 
-	/**
-	 * redirige a la pagina principal de un usuario Cliente.
-	 * 
-	 * @param model contiene los atributos de las vistas.
-	 * @return la pagina principal.
-	 */
-	@GetMapping( value = "/")
-	public String principal(Model model) {
-		
-		model.addAttribute("productos", productoStockServices.getProductos());
-		
-		return principal;
-	}
+
+
 	
 	/**
 	 * busca los el listado de ProductoCarrito asociado al Usuario con id y 
@@ -82,22 +68,7 @@ public class ClienteController {
 	}
 	
 	
-	/**
-	 * busca un productoCarrito por id y devuelve una pagina cargada con la informacion del producto.
-	 * 
-	 * @param id identificador del productoCarrito que se va a ver la informacion.
-	 * @param model contiene los atributos de las vistas.
-	 * @return la pagina de detalles de un producto.
-	 */
-	@GetMapping( value = "/elcarrito/{id}/informacion")
-	public String informaciondelProductoCarrito(@PathVariable("id")Long id,Model model) {
-		
-		ProductoStock productoStock=productoStockServices.getById(id);
-		model.addAttribute("productoInfo",productoStock);
-		model.addAttribute("delCarrito", true);
-		
-		return vistaInformacionProducto;
-	}
+
 	
 	
 	/**
@@ -131,6 +102,7 @@ public class ClienteController {
 	
 		ProductoCarrito productoCarrito=productoCarritoServices.getById(id);
 		model.addAttribute("productoEliminar", productoCarrito);
+		
 	
 		return vistaEliminar;
 	}
@@ -196,15 +168,13 @@ public class ClienteController {
 			
 	}
 	
-	private  final String principal="vistascompradores/principal";
 	private final String vistaAgregaralcarrito="vistascompradores/agregaralcarrito";
 	private final String vistaActualizar="vistascompradores/actualizar";
 	private final String carrito="vistascompradores/carrito";
-	private final String vistaInformacionProducto="vistascompradores/informacionproducto";
 	private  final String redirectAlCarrito="redirect:/carritodecompras/cliente/elcarrito/10";
 	private  final String msjActualizado="Se ha actualizado un producto del carrito de compras";
 	private final String vistaEliminar="vistascompradores/eliminar";
-	
+	private final String vistaInformacionProducto="principal/informacionproducto";
 	
 
 	@Autowired

@@ -32,6 +32,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ProductoCarrito {
 
+	
+	
 	@Id
 	@GeneratedValue(strategy =GenerationType.IDENTITY )
 	private Long id;

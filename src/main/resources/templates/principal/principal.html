@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/comprador/principal.css}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <meta charset="ISO-8859-1">
+    <title>Carrito de compras | Feed</title>
+</head>
+<body>
+	<header th:insert="~{/fragmentos/headertienda.html::header}" > </header>
+<main class="main">
+   
+    
+    <div class="container">
+
+        <ul class="nav" id="menu-opciones">
+            <li class="nav-item">
+                <div id="por-precio" class="dropdown">
+                    <button class="btn btn-outline-primary dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      filtrar por precio
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" th:href="@{/carritodecompras/productos/buscar/precio(hasta=50000.0)}" >menor a 50.000</a></li>
+                      <li><a class="dropdown-item" th:href="@{/carritodecompras/productos/buscar/precio(desde=50000.0,hasta=100000.0)}">50.000 - 100.000</a></li>
+                      <li><a class="dropdown-item"th:href="@{/carritodecompras/productos/buscar/precio(desde=150000.0,hasta=200000.0)}">150.000 - 200.000</a></li>
+                      <li><a class="dropdown-item" th:href="@{/carritodecompras/productos/buscar/precio(desde=200000.0)}" >mayor a 200.000</a></li>
+                    </ul>
+                  </div>
+            </li>
+            <li class="nav-item" id="ordenar">
+                <div id="por-precio" class="dropdown">
+                    <button class="btn btn-outline-primary dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      ordenar productos
+                    </button>
+                    <ul class="dropdown-menu" >
+                      <li><a class="dropdown-item " th:href="@{/carritodecompras/productos(orden='fecha_ASC')}">por fecha de publicación</a></li>
+                      <li><a class="dropdown-item" th:href="@{/carritodecompras/productos(orden='precio_ASC')}">de menor a mayor precio</a></li>
+                      <li><a class="dropdown-item" th:href="@{/carritodecompras/productos(orden='precio_DESC')}">de mayor a menor precio</a></li>
+                      <li><a class="dropdown-item" th:href="@{/carritodecompras/productos(orden='cantidad_disponible_DESC')}">por unidades disponible</a></li>
+                    </ul>
+                  </div>
+            </li>
+          </ul>
+        
+         
+          
+        <div class="card" id="card-p">
+            <div class="card-header">
+                <h2 >Productos de la tienda</h2>
+            </div>
+            <div class="card-body">
+                <div class="container mt-4">
+                    <div class="row">
+                        <div th:each="producto: ${productos}" class="col-md-3 mb-4">
+                            <div class="card" id="tarjeta"  >
+                                <div class="card-header" id="header-producto">
+                                    <img id="imgproducto" th:src="@{/images/etiquetaprecio.png}"class="card-img-top"  >
+                                </div>
+                              
+                                <div class="card-body">
+                                    <h5 class="card-title" id="nombre-producto" th:text="${producto.nombre}"></h5>
+                                    <h5 class="card-title" th:text="'$ '+${producto.precio}"></h5>  
+                                    
+                                    <div>
+                                        <a th:href="@{/carritodecompras/producto/{id}/informacion(id=${producto.id})}"  id="btn-card"   class="btn btn-outline-secondary rounded-pill">Informacion</a>
+                                    </div>
+                                    <div>
+                                        <a th:href="@{/carritodecompras/cliente/producto/agregar/{id} (id=${producto.id})}" id="btn-card2" class="btn btn-outline-primary rounded-pill">Agregar al carrito</a>
+                                    </div>
+  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <nav th:if="${ ispageable==true}" aria-label="Page navigation example" >
+                    <ul th:if="${productos.totalPages > 0}" class="pagination justify-content-center">
+                        <li class="page-item" th:classappend="${productos.number == 0 ? 'disabled' : ''}">
+                            <a th:href="@{/carritodecompras/principal(page=${productos.number - 1})}" class="page-link">Anterior</a>
+                        </li>
+                                    
+                        <li class="page-item" th:classappend="${i eq productos.number + 1} ? 'active'" th:each="i : ${#numbers.sequence( 1, productos.totalPages, 1)}">
+                            <a class="page-link" th:href="@{/carritodecompras/principal?page={tmpPag} (tmpPag=${i-1}) }" th:text="${i}" th:title="${'Page '+ i}" data-toggle="tooltip"></a>
+                        </li>
+                        <li class="page-item" th:classappend="${productos.number == (productos.totalPages - 1) ? 'disabled' : ''}">
+                            <a th:href="@{/carritodecompras/principal(page=${productos.number + 1})}" class="page-link">Siguiente</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="px-4 py-5 my-5 text-center"> 
+        <h1 class="display-5 fw-bold text-body-emphasis">Carrito de compras proyecto</h1> 
+        <div class="col-lg-6 mx-auto"> 
+            <p class="lead mb-4">
+                El carrito de compras permite a los usuarios agregar productos, modificar la cantidad de productos en el carrito y eliminar productos del carrito.
+                El proyecto utiliza una base de datos MySQL para almacenar la información de los productos y los clientes.
+                El proyecto se implementó en Java 17 y utiliza Spring Boot para el desarrollo de la capa de presentación, el acceso a datos, seguridad y el monitoreo de la aplicación.
+            </p> 
+        </div> 
+    </div>
+ </main>    
+    <br>
+    <footer th:insert="~{\fragmentos\footertienda.html::footer-tienda}"></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>

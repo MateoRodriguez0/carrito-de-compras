@@ -19,8 +19,17 @@ public class CategoriaServicesImpl implements CategoriaServices {
 	public List<Categoria> getCategoriasAsc() {
 		return categoriaRepository.findAll(Sort.by(Direction.ASC,"nombre"));
 	}
-
 	
+	@Override
+	public Categoria getById(Long id) {
+		
+		return categoriaRepository
+				.findById(id)
+				.orElse(null);
+	}	
 	@Autowired
 	private CategoriaRepository categoriaRepository;
+
+
+
 }

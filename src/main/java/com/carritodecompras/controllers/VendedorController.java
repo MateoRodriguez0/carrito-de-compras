@@ -1,6 +1,5 @@
 package com.carritodecompras.controllers;
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -41,9 +40,6 @@ public class VendedorController {
 	 */
 	@GetMapping(value ="/misproductos/{id}")
 	public String listarProductos(@PathVariable("id") Long id, Model model ) {
-		
-		List<ProductoStock> productoStocks= productoStockServices.getProductosByVendedor(id);
-		model.addAttribute("productoStocks", productoStocks);
 		return listaProductos;
 	}
 	
@@ -85,10 +81,6 @@ public class VendedorController {
 		return vistaagregar;
 	}
 	
-	@GetMapping(value ="/")
-	public String principal() {
-		return vistaprincipal;
-	}
 	
 	
 	/**
@@ -144,22 +136,7 @@ public class VendedorController {
 		}
 		
 	}
-	
-	/**
-	 * busca un productoStock por id y luego lo agrega al modelo.
-	 * 
-	 * @param id identificador del productoStock que se va a ver la informacion.
-	 * @param model contiene los atributos de las vistas.
-	 * @return la pagina de detalles de producto con los datos del producto asociado al id.
-	 */
-	@GetMapping( value = "/producto/{id}/detalles")
-	public String detallesdelPRoducto(@PathVariable("id")Long id,Model model) {
-		
-		ProductoStock productoStock=productoStockServices.getById(id);
-		model.addAttribute("productoInfo",productoStock);
-	
-		return detallesProducto;
-	}
+
 	
 	
 	/**
@@ -176,11 +153,10 @@ public class VendedorController {
 	
 	
 	
-	private static final String detallesProducto="vistasvendedores/detallesproducto";
-	private static final String listaProductos="vistasvendedores/listado";
+	
+	private static final String listaProductos="vistasvendedores/misproductos";
 	private static final String vistaactualizar="vistasvendedores/actualizarproducto";
 	private static final String vistaagregar="vistasvendedores/agregarproducto";
-	private static final String vistaprincipal="vistasvendedores/principal";
 	private static final String eliminar="redirect:/carritodecompras/vendedor/misproductos/";
 	private static final String redirectListado="redirect:/carritodecompras/vendedor/misproductos";
 	private static final String msjAgregado="Se ha agregado un Nuevo producto al listado";
