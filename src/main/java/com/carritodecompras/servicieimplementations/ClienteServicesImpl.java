@@ -3,6 +3,7 @@ package com.carritodecompras.servicieimplementations;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 import com.carritodecompras.model.ProductoCarrito;
@@ -45,5 +46,30 @@ public class ClienteServicesImpl implements ClienteServices {
 
 	@Autowired
 	private ProductoCarritoRepository productoCarritoRepository;
+
+	@Override
+	public Usuario GetbyEmail(String email) {
+		
+		return usuarioRepository.findByCorreoElectronico(email);
+	}
+
+
+	@Override
+	public boolean buscarProductoStockEnCarritoCliente(Long id, Authentication authentication) {
+		
+		return usuarioRepository
+				.findByCorreoElectronico(authentication.getName())
+				.getProductoCarritos()
+				.stream()
+				.filter(p ->p.getProductoStock()
+						.getId()==id)
+				.findFirst()
+				.isPresent();
+		
+	
+		
+		
+		
+	}
 
 }

@@ -11,7 +11,7 @@
             </ul> 
           </li> 
         </ul>
-        
+      
         
           <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -21,24 +21,34 @@
               <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel"> <img class="logo1"  th:src="@{/images/logo-home.png}" > Carrito de compras</h5>
               <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
+
             <div class="offcanvas-body" >
               <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+
+                <li secAuthorize="isAuthenticated()">
+                  <p class="h5">¡Hola, <span  sec:authentication="name" ></span>!</p>
+                </li>
+
                 <li class="nav-item">
                   <a class="nav-link active" aria-current="page" th:href="@{/carritodecompras/principal}">Home</a>
                 </li>
-                <li class="nav-item">
+
+                <li class="nav-item" sec:Authorize="hasAnyAuthority('Cliente')">
                   <a class="nav-link" th:href="@{/carritodecompras/cliente/elcarrito}">Ir al carrito
                   	<img class="ir-al-carrito" th:src="@{/images/carrito-de-compras.png}">
                   </a>
-                  <a class="nav-link" th:href="@{/carritodecompras/vendedor/misproductos}">Mis productos</a>
-                  
                 </li>
+
+                <li class="nav-item" sec:Authorize="hasAnyAuthority('Vendedor')">
+                  <a class="nav-link" th:href="@{/carritodecompras/vendedor/misproductos}">Mis productos</a>
+                </li>
+
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Mas acciones
                   </a>
-                  <ul class="dropdown-menu dropdown-menu-dark">
-                    <li><a class="dropdown-item" th:href="@{/carritodecompras/vendedor/producto/nuevo}">Publicar nuevo producto</a></li>
+                  <ul  class="dropdown-menu dropdown-menu-dark">
+                    <li sec:Authorize="hasAnyAuthority('Vendedor')"><a class="dropdown-item" th:href="@{/carritodecompras/vendedor/producto/nuevo}">Publicar nuevo producto</a></li>
                     <li><a class="dropdown-item" href="#">Información de la cuenta</a></li>
                     <li><a class="dropdown-item" href="#">Preguntas frecuentes</a></li>
                     <li><a class="dropdown-item" href="#">Clientes</a></li>
@@ -46,8 +56,8 @@
                  
                   </ul>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="">cerrar sesión</a>
+                <li class="nav-item" sec:Authorize="isAuthenticated">
+                  <a class="nav-link active" aria-current="page" th:href="@{/carritodecompras/logout}">cerrar sesión</a>
               </li>
               </ul>
             </div>

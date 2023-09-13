@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.Authentication;
 
 import com.carritodecompras.model.ProductoStock;
 
@@ -33,9 +34,9 @@ public interface ProductoStockServices {
 
 	public Page<ProductoStock> getProductos(Pageable pageable);
 	
-	public void guardarProducto(ProductoStock productoStock);
+	public void guardarProducto(ProductoStock productoStock, Authentication authentication);
 	
-	public void eliminarProducto(ProductoStock productoStock);
+	public void eliminarProducto(Long id);
 	
 	public void actualizarProducto(ProductoStock productoStock);
 
@@ -71,10 +72,33 @@ public interface ProductoStockServices {
 	 */
 	public List<ProductoStock> porRangoDePrecios(Double min, Double Max);
 	
+	/**
+	 * busca productos en orden por fecha de pucblicacion.
+	 * 
+	 * @return la lista de resultados de la busqueda.
+	 */
 	public List<ProductoStock> porFechaDepublicacion();
+
+	/**
+	 * busca productos en orden por cantidad dipsonimble de mayor a menor.
+	 * 
+	 * @return la lista de resultados de la busqueda.
+	 */
 	public List<ProductoStock> porCantidadDisponible();
 	
+	
+	/**
+	 *  busca productos que tengan un precio menor al argumento.
+	 * 
+	 * @return la lista de resultados de la busqueda.
+	 */
 	public List<ProductoStock> porPrecioMenorA(Double precio);
+	
+	/**
+	 * busca productos que tengan un precio mayor al argumento.
+	 * 
+	 * @return la lista de resultados de la busqueda.
+	 */
 	public List<ProductoStock> porPrecioMayorA(Double precio);
 
 	

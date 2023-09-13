@@ -2,6 +2,7 @@ package com.carritodecompras.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.carritodecompras.model.ProductoStock;
 import com.carritodecompras.servicies.CategoriaServices;
 import com.carritodecompras.servicies.ProductoStockServices;
+
+import jakarta.servlet.http.HttpSession;
 
 /**
  * controlador de vista principal. 
@@ -38,6 +41,19 @@ public class HomeController {
 		return home;
 	}
 	
+	@GetMapping(value = "/logout")
+	public String cerrarSession() {
+		
+		return logout;
+	}
+	
+	
+	@GetMapping(value = "/auth")
+	private String autenticacionDeUsuario(Authentication auth,HttpSession httpSession) {
+		
+		return "redirect:/carritodecompras/principal";
+	}
+	
 	
 	/**
 	 * redirige a la pagina principal de un usuario Cliente.
@@ -46,7 +62,7 @@ public class HomeController {
 	 * @return la pagina principal.
 	 */
 	@GetMapping(value ="/principal")
-	public String principal(Model model,Pageable page) {
+	public String principal(Model model,Pageable page,Authentication auth) {
 			
 		Page<ProductoStock> productos =productoStockServices.getProductos(page);
 		model.addAttribute("productos",productos);
@@ -91,6 +107,7 @@ public class HomeController {
 
 	
 	private final String home="principal/home";
+	private final String logout="principal/logout";
 	private final String vistaprincipal="principal/principal";
 	private final String vistaInformacionProducto="principal/informacionproducto";
 	

@@ -1,6 +1,7 @@
 package com.carritodecompras.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -68,6 +69,9 @@ public class RegistroController {
 		
 		
 		else {
+			String passwordCodificada=passwordEncoder.encode(usuario.getPassword());
+			usuario.setPassword(passwordCodificada);
+			
 			if(usuario.getRol().getId()==1) {
 				clienteServices.crearCuenta(usuario);
 			}
@@ -95,27 +99,11 @@ public class RegistroController {
 	
 	
 	
-	/**
-	 *  Es la ruta del archivo en el que se encuentra la pagina de registro.
-	 * 
-	 */
+	
 	private final String registro="inicio-registro/registro";
-	
-	/**
-	 * mensaje que se mostrará al redireccionar la pagina despues de crear una cuenta. 
-	 * 
-	 */
 	private final String creada="¡ Tu cuenta se creó con exito !";
-	
-	
-	
-	/**
-	 *  Es la ruta del archivo en el que se encuentra la pagina de  inicio.
-	 * 
-	 */
-	private  final String vistainicio="redirect:/carritodecompras/inicio";
-	
-	private  final String msjEmailExistente="El correo electronico ya está registrado";
+	private final String vistainicio="redirect:/carritodecompras/inicio";
+	private final String msjEmailExistente="El correo electronico ya está registrado";
 	@Autowired
 	private RolServices rolServices;
 
@@ -124,4 +112,7 @@ public class RegistroController {
 	
 	@Autowired
 	private VendedorServices vendedorServices;
+	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 }

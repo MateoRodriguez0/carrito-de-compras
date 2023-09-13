@@ -2,6 +2,7 @@ package com.carritodecompras.controllers;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.carritodecompras.model.ProductoStock;
+import com.carritodecompras.model.Usuario;
 import com.carritodecompras.servicies.CategoriaServices;
 import com.carritodecompras.servicies.ProductoStockServices;
+import com.carritodecompras.servicies.VendedorServices;
 
 import jakarta.validation.Valid;
 
@@ -38,8 +41,14 @@ public class VendedorController {
 	 * @param model  contiene los atributos de las vistas.
 	 * @return la pagina con el listado de productoStock asociado al id del vendedor.
 	 */
-	@GetMapping(value ="/misproductos/{id}")
-	public String listarProductos(@PathVariable("id") Long id, Model model ) {
+	@GetMapping(value ="/misproductos")
+	public String listarProductos(Authentication authentication, Model model ) {
+		
+		Usuario usuario=vendedorServices.GetbyEmail(authentication.getName());
+		
+		model.addAttribute("productoStocks", usuario.getProductoStocks());
+		
+		
 		return listaProductos;
 	}
 	
@@ -69,9 +78,9 @@ public class VendedorController {
 	@GetMapping(value ="/producto/eliminar/{id}")
 	public String eliminarProducto(@PathVariable("id")Long id,RedirectAttributes redirectAttributes) {
 		
-		ProductoStock productoStockEliminado=productoStockServices.getById(id);
-		System.out.println("se ha eliminado el producto con nombre: "+ productoStockEliminado.getNombre());
+		productoStockServices.eliminarProducto(id);
 		redirectAttributes.addFlashAttribute("msjEliminado",msjEliminado);
+		
 		return eliminar;
 	}
 	
@@ -91,12 +100,13 @@ public class VendedorController {
 	 * @return
 	 */
 	@PostMapping(value ="/producto/agregar")
-	public String agregarProducto(@Valid ProductoStock producto,BindingResult bindingResult,RedirectAttributes redirectAttributes) {
+	public String agregarProducto(@Valid ProductoStock producto,BindingResult bindingResult,Authentication auth,RedirectAttributes redirectAttributes) {
 		
 		if(bindingResult.hasErrors()) {
 			return vistaagregar;
 		}
 		else {
+			productoStockServices.guardarProducto(producto,auth);
 			redirectAttributes.addFlashAttribute("msj",msjAgregado);
 			return redirectListado;
 		}
@@ -114,23 +124,14 @@ public class VendedorController {
 	@PostMapping(value ="/producto/actualizado")
 	public String actualizarProducto(@Valid @ModelAttribute("productoActualizar") ProductoStock productoActualizar,BindingResult bindingResult,RedirectAttributes redirectAttributes) {
 		
+		
 		if(bindingResult.hasErrors()) {
 			return vistaactualizar;
 		}
 		else {
-			ProductoStock productoStockActualizar=productoStockServices.getById(productoActualizar.getId());
-			productoStockActualizar.setNombre(productoActualizar.getNombre());
-			productoStockActualizar.setUnidadesDisponibles(productoActualizar.getUnidadesDisponibles());
-			productoStockActualizar.setPrecio(productoActualizar.getPrecio());
-			productoStockActualizar.setDescripcion(productoActualizar.getDescripcion());
 			
-			productoStockActualizar
-			.getCategoria()
-			.setId(productoActualizar
-					.getCategoria()
-					.getId());
 			
-			productoStockServices.actualizarProducto(productoStockActualizar);
+			productoStockServices.actualizarProducto(productoActualizar);
 			redirectAttributes.addFlashAttribute("msj",msjActualizado);
 			return redirectListado;
 		}
@@ -157,7 +158,7 @@ public class VendedorController {
 	private static final String listaProductos="vistasvendedores/misproductos";
 	private static final String vistaactualizar="vistasvendedores/actualizarproducto";
 	private static final String vistaagregar="vistasvendedores/agregarproducto";
-	private static final String eliminar="redirect:/carritodecompras/vendedor/misproductos/";
+	private static final String eliminar="redirect:/carritodecompras/vendedor/misproductos";
 	private static final String redirectListado="redirect:/carritodecompras/vendedor/misproductos";
 	private static final String msjAgregado="Se ha agregado un Nuevo producto al listado";
 	private static final String msjActualizado="Se ha actualizado un producto del listado ";
@@ -169,4 +170,7 @@ public class VendedorController {
 
 	@Autowired
 	private ProductoStockServices productoStockServices;
+	
+	@Autowired
+	private VendedorServices vendedorServices;
 }

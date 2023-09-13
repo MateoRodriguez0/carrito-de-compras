@@ -9,7 +9,14 @@ import java.lang.annotation.Target;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
-
+/**
+ *antotacion personalizada para la validacion de contraseña en formulario de registro de cuenta.  
+ *  
+ *@author Mateo j. Rodriguez Chico
+ *
+ *@since
+ *
+ */
 @Documented
 @Target(FIELD)
 @Constraint(validatedBy = PaswordValidation.class)

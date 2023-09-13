@@ -24,29 +24,35 @@
 						<hr>
 						<p class="card-text" th:text="${productoAgregar.descripcion}"></p>
 						<p class="card-text">Precio: <strong th:text="${productoAgregar.precio}"></strong></p>
-						
-						<div class="div-cantidad">
-							<p  >Cantidad: <span></span></p>
+						<form   th:action="@{/carritodecompras/cliente/producto/agregar}" th:object="${productoCarrito}" method="post">
+							<input type="hidden" th:name="productoStock.id" th:value="${productoAgregar.id}">
+							
+							<div class="div-cantidad">
+								<p  >Cantidad: <span></span></p>
+							</div>
+							<div class="select">
+								<select class="form-select form-select-sm" style="width: 60px;" th:field="*{cantidadSeleccionada}"  aria-label="Small select example" >
+									<option selected value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+									<option value="6">6</option>
+									<option value="7">7</option>
+									<option value="8">8</option>
+									<option value="9">9</option>
+									<option value="10">10</option>
+								</select>
+								
+							</div>
 						</div>
-						<div class="select">
-							<select class="form-select form-select-sm" style="width: 60px;" name="" aria-label="Small select example" >
-								<option selected value="1">1</option>
-								<option value="2">2</option>
-								<option value="3">3</option>
-								<option value="4">4</option>
-								<option value="5">5</option>
-								<option value="6">6</option>
-								<option value="7">7</option>
-								<option value="8">8</option>
-								<option value="9">9</option>
-								<option value="10">10</option>
-							</select>
+						<div class="div-btn">
+							<input type="submit"class="btn btn-outline-primary rounded-pill" id="agregaralcarrito" value="Agregar al carrito">
 							
 						</div>
-					</div>
-					<div class="div-btn">
-						<a href=""><button type="button" class="btn btn-outline-primary rounded-pill" id="agregaralcarrito">Agregar al carrito</button></a>
-					</div>
+
+						</form>
+						
 
 					
 				</div>

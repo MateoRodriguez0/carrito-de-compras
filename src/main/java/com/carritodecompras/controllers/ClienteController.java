@@ -1,8 +1,10 @@
 package com.carritodecompras.controllers;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,6 +14,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.carritodecompras.model.ProductoCarrito;
 import com.carritodecompras.model.ProductoStock;
+import com.carritodecompras.model.Usuario;
+import com.carritodecompras.servicies.CategoriaServices;
 import com.carritodecompras.servicies.ClienteServices;
 import com.carritodecompras.servicies.ProductoCarritoServices;
 import com.carritodecompras.servicies.ProductoStockServices;
@@ -41,34 +45,17 @@ public class ClienteController {
 	 * @param model contiene los atributos de las vistas.
 	 * @return la pagina carrito de compras con el listado de productos del cliente con id.
 	 */
-	@GetMapping( value = "/elcarrito/{id}")
-	public String alCarrito(@PathVariable("id")Long id, Model model) {
+	@GetMapping( value = "/elcarrito")
+	public String alCarrito(Authentication authentication, Model model) {
 		
-		List<ProductoCarrito>productosCarrito=clienteServices.getProductosByCliente(id);
+		Usuario cliente=clienteServices.GetbyEmail(authentication.getName());
+		
+		List<ProductoCarrito>productosCarrito=cliente.getProductoCarritos();
 		model.addAttribute("ProductosCarrito", productosCarrito);
 		
 		return carrito;
 	}
 	
-	/**
-	 * busca un ProductoStock por id y lo agrega al modelo.
-	 * 
-	 * @param id identificador del productoStock que se va a ver la informacion.
-	 * @param model contiene los atributos de las vistas.
-	 * @return la pagina de detalles de un producto.
-	 */
-	@GetMapping( value = "/producto/{id}/informacion")
-	public String informaciondelProducto(@PathVariable("id")Long id,Model model) {
-		
-		ProductoStock productoStock=productoStockServices.getById(id);
-		model.addAttribute("productoInfo",productoStock);
-		model.addAttribute("delCarrito", false);
-		
-		return vistaInformacionProducto;
-	}
-	
-	
-
 	
 	
 	/**
@@ -79,14 +66,45 @@ public class ClienteController {
 	 * @return la vista para agregar el producto al carrito de compras.
 	 */
 	@GetMapping( value = "/producto/agregar/{id}")
-	public String vistaAgregarAlCarrito(@PathVariable("id")Long id, Model model) {
+	public String vistaAgregarAlCarrito(ProductoCarrito productoCarrito,@PathVariable("id")Long id, Model model) {
 		
 		ProductoStock productoStock=productoStockServices.getById(id);
+		
 		model.addAttribute("productoAgregar",productoStock);
 		
 		return vistaAgregaralcarrito;
 	}
 	
+	
+	/**
+	 * 
+	 * @param productoCarrito sera el producto que se va a agregar al carrito
+	 * @param bindingResult 
+	 * @param auth autenticador de usuario para obtener el nombre los datos del cliente en la sesion
+	 * @param redirectAttributes contiene atributos de redireccion de paginas.
+	 * @return la vista del carrito de compras del cliente actual en la sesion. 
+	 */
+	@PostMapping(value = "/producto/agregar")
+	public String AgregarProductoAlCarrito(ProductoCarrito productoCarrito,BindingResult bindingResult, Authentication auth,RedirectAttributes redirectAttributes) {
+		
+		
+		if(bindingResult.hasErrors()) {
+			return vistaAgregaralcarrito;
+		}
+		
+		else {
+			if(clienteServices.buscarProductoStockEnCarritoCliente(productoCarrito.getProductoStock().getId(), auth)) {
+				redirectAttributes.addFlashAttribute("msjIntentoDeAgregado", msjProductoEncontrado);
+			}
+			else {
+				productoCarritoServices.guardarProducto(productoCarrito, auth);
+				redirectAttributes.addFlashAttribute("msj", msjAgregado);
+			}
+	
+			return  redirectAlCarrito;
+		}
+		
+	}
 	
 	
 	
@@ -158,7 +176,7 @@ public class ClienteController {
 			
 			productoCarrito.setCantidadSeleccionada(productoActualizar.getCantidadSeleccionada());
 			productoCarritoServices.actualizarProducto(productoCarrito);
-			redirectAttributes.addFlashAttribute("msjActualizado",msjActualizado);
+			redirectAttributes.addFlashAttribute("msj",msjActualizado);
 		}
 		
 		
@@ -168,13 +186,27 @@ public class ClienteController {
 			
 	}
 	
+	
+	/**
+	 * Contiene algunos atributos necesarios para las vistas.
+	 * 
+	 * @param model contiene los atributos de las vistas.
+	 */
+	@ModelAttribute
+	public void atributes(Model model) {
+		model.addAttribute("categorias", categoriaServices.getCategoriasAsc());
+	}
+	
+	
+	
 	private final String vistaAgregaralcarrito="vistascompradores/agregaralcarrito";
 	private final String vistaActualizar="vistascompradores/actualizar";
 	private final String carrito="vistascompradores/carrito";
-	private  final String redirectAlCarrito="redirect:/carritodecompras/cliente/elcarrito/10";
+	private  final String redirectAlCarrito="redirect:/carritodecompras/cliente/elcarrito";
 	private  final String msjActualizado="Se ha actualizado un producto del carrito de compras";
 	private final String vistaEliminar="vistascompradores/eliminar";
-	private final String vistaInformacionProducto="principal/informacionproducto";
+	private static final String msjAgregado="Se ha agregado un Nuevo producto al Carrito";
+	private static final String msjProductoEncontrado="El producto ya Se encuentra agregado al Carrito";
 	
 
 	@Autowired
@@ -186,5 +218,8 @@ public class ClienteController {
 	@Autowired
 	private ProductoCarritoServices productoCarritoServices;
 	
+	
+	@Autowired
+	private CategoriaServices categoriaServices;
 	
 }

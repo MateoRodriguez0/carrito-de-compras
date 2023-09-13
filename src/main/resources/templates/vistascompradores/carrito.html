@@ -20,12 +20,18 @@
             </div>
             
             <div class="card-body">
-              <a th:href="@{/carritodecompras/cliente/}"><button type="button" class="btn btn-outline-primary">Ir de compras</button></a> 
+              <a th:href="@{/carritodecompras/principal}"><button type="button" class="btn btn-outline-primary">Ir de compras</button></a> 
             
-              <div th:if="${msjActualizado !=null}" class="alert alert-success alert-dismissible fade show" id="msj" role="alert">
-                <h5 id="msj-actualizado" th:text="${msjActualizado}"></h5> 
+              <div th:if="${msj !=null }" class="alert alert-success alert-dismissible fade show" id="msj" role="alert">
+                <h5 id="msj-actualizado" th:text="${msj}"></h5> 
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
               </div>
+              
+          <div th:if="${msjIntentoDeAgregado !=null}" class="alert alert-warning alert-dismissible fade show" id="msj" role="alert">
+           <h5 th:text="${msjIntentoDeAgregado}"></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+                  
               <hr>
 
               <table class="table table-dark table-hover"> 

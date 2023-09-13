@@ -19,7 +19,12 @@ import com.carritodecompras.servicies.ProductoStockServices;
 @RequestMapping(value = "/carritodecompras")
 public class TiendaController {
 
-	
+	/**
+	 * 
+	 * @param id el identificador de la categoria
+	 * @param model contiene los atributos de las vistas.
+	 * @return la vista principal
+	 */
 	@GetMapping(value = "/categoria/{id}")
 	public String productosPorCatgeoria(@PathVariable("id") Long id,Model model) {
 		
@@ -29,6 +34,13 @@ public class TiendaController {
 		
 	}
 	
+	/**
+	 * 
+	 * @param minimo precio minimo.
+	 * @param maximo precio maximo. 
+	 * @param model contiene los atributos de las vistas.
+	 * @return  la vistra principal con el resultado de la busqueda.
+	 */
 	@GetMapping(value = "/productos/buscar/precio")
 	public String productosPorRangoDePrecio(@RequestParam(name = "desde",required =false) Double minimo,@RequestParam(name = "hasta",required =false)Double maximo,Model model) {
 		
@@ -53,6 +65,13 @@ public class TiendaController {
 	}
 	
 	
+	
+	/**
+	 * 
+	 * @param orden parametro que indica el tipo de operacion a realizar con los productos de la tienda.
+	 * @param model contiene los atributos de las vistas.
+	 * @return la vistra principal con el resultado de la busqueda
+	 */
 	@GetMapping(value = "/productos")
 	public String productosEnorden(@RequestParam(name = "orden")String orden,Model model) {
 		

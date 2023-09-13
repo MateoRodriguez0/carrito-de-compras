@@ -13,5 +13,11 @@ public interface CategoriaServices {
 	public List<Categoria> getCategoriasAsc();
 	
 	
+	/**
+	 * Busca una categoria por id.
+	 * 
+	 * @param id de la categoria a buscar.
+	 * @return la categoria encontrada.
+	 */
 	Categoria getById(Long id);
 }

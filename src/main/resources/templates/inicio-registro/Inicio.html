@@ -21,30 +21,18 @@
 
 	<div class="formulario-inicio">
 		
-		<form th:action="@{inicio}" method="post" th:object="${usuario}">
+		<form method="post" th:action="@{/carritodecompras/inicio}" >
 
 			
 			<h1 class="h1" >Inicio de sesion</h1>
 			<br><br><br>
 			
-			<div class=" selecion-tipo-cuenta">
-
-				
-				<div class="c-option">
-					<select class="form-select form-select-sm rounded-pill custom-select" id="tipo" th:field="*{rol.id}" >
-						<option th:each="rol: ${roles}" selected th:value="${rol.id}"  th:text="${rol.nombre}"></option>
-							
-					</select>
-				</div>
-
-			</div>
-	
 			
 			<div>
-				<input class="rounded-pill" id="Campodetexto" type="email" th:field="*{correoElectronico}"  placeholder="correo electronico" >
+				<input class="rounded-pill" id="Campodetexto" type="text"  name="username"  placeholder="Correo electronico" required >
 			<br><br>
 
-			<input class="rounded-pill" id="Campodetexto" type="password" th:field="*{password}"  placeholder="contraseña" >
+			<input class="rounded-pill" id="Campodetexto" type="password" name="password"  placeholder="contraseña" required>
 			<br><br><br>
 			<input class="btn btn-outline-primary rounded-pill" type="submit" value="Iniciar sesion"  id="especial" >
 

@@ -12,7 +12,6 @@ import com.carritodecompras.validators.Password;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -53,22 +52,22 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotBlank(message = "El campo nombre no puede estar en blanco")
-	@Size(min = 5, max = 45,message = "El campo nombre no esta bien")
-	@NotEmpty(message = "El campo nombre no puede estar vacio")
-	@Column(name = "nombre")
+	@NotBlank()
+	@Size(min = 5, max = 45)
+	@NotEmpty()
+	@Column()
 	private String nombre;
 	
 	
-	@NotBlank(message = "El campo nombre de usuario no puede estar en blanco")
-	@NotEmpty(message = "El campo nombre de usuario no puede estar vacio")
+	@NotBlank()
+	@NotEmpty()
 	@Column(name = "nombre de usuario")
 	private String nombreUsuario;
 	
 	
-	@NotBlank(message = "El campo correo electronicoe no puede estar en blanco")
-	@NotEmpty(message = "El campo correo electronico no puede estar vacio")
-	@Column(name = "correo electronico")
+	@NotBlank()
+	@NotEmpty()
+	@Column(name = "correoElectronico")
 	@Email
 	private String correoElectronico;
 	
@@ -77,21 +76,21 @@ public class Usuario {
 	private String telefono;	
 	
 	@Password
-	@NotBlank(message = "El campo contraseña no puede estar en blanco")
-	@NotEmpty(message = "El campo contraseña no puede estar vacio")
+	@NotBlank()
+	@NotEmpty()
 	@Column(name = "password")
 	private String password;
 	
 	
 	@Password
 	@Transient
-	@NotBlank(message = "El campo  verificación de contraseña no puede estar en blanco")
-	@NotEmpty(message = "El campo verificación de contraseña no puede estar vacio")
+	@NotBlank()
+	@NotEmpty()
 	private String passwordValid;
 	
 	
 	
-	@NotNull(message = "El campo fecha de nacimiento no puede estar vacio")
+	@NotNull()
 	@Column(name = "fecha de nacimiento")
 	private Date fechaDeNacimiento;
 	
@@ -100,7 +99,7 @@ public class Usuario {
 	 *Identifica el rol de un usuario en la entidad usuarios en la base de datos. 
 	 *el rol es identificado a traves de un id.
 	 */
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne()
 	@JoinColumn(name = "IdRol" )
 	private Rol rol;
 	

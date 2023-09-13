@@ -1,26 +1,21 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<link rel="stylesheet" th:href="@{/css/comprador/detalles.css}">
+<link rel="stylesheet" th:href="@{/css/vendedor/detalles.css}">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 <meta charset="UTF-8">
 <title>Carrito de compras | Informacion de Productos</title>
 </head>
 <body>
-	
 	<header th:insert="~{/fragmentos/headertienda.html::header}" > </header>
-	
 	<main role="main">
-		
 		<div class="container">
-			<div class="card"   id="card_principal">
+			<div class="card" id="card_principal">
 				<div class="card-header">
 					<div style="display: inline-block">
 						<h3 class="h3"> Información sobre este producto</h3>
 					</div>
-					<div th:if="${delCarrito!=false}" sec:Authorize="hasAnyAuthority('Cliente')" class="btn-agregar">
-						<a th:href="@{/carritodecompras/cliente/producto/agregar/{id} (id=${productoInfo.id})}" id="btn-card2" class="btn btn-outline-primary rounded-pill">Agregar al carrito</a>
-					</div>
+				
 				</div>
 				<div class="card-body" >
 					<div class="row">
@@ -39,7 +34,7 @@
 							</p>
 							<p id="parrafo" >
 								<strong class="h6" >Unidades disponible: </strong>
-								<span class="txt-normal"  th:text="${productoInfo.unidadesDisponibles}"></span>
+								<span class="txt-normal"  th:text="${productoInfo.unidadesDisponibles}">dssd</span>
 							</p>
 							
 							<hr style="color: white;">
@@ -73,11 +68,9 @@
 				</div>
 			</div>
 		</div>
-
 	</main>
-
 <br>
-<footer th:insert="~{\fragmentos\footertienda.html::footer-tienda}"></footer>
+<footer th:insert="~{\fragmentos\footertiendafijo.html::footer-tienda}"></footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
 </html>

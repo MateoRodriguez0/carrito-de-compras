@@ -1,12 +1,17 @@
 package com.carritodecompras.servicieimplementations;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 import com.carritodecompras.model.ProductoCarrito;
+import com.carritodecompras.model.Usuario;
 import com.carritodecompras.repositories.ProductoCarritoRepository;
+import com.carritodecompras.servicies.ClienteServices;
 import com.carritodecompras.servicies.ProductoCarritoServices;
 
 @Service
@@ -27,7 +32,11 @@ public class ProductoCarritoServicesImpl implements ProductoCarritoServices{
 	}
 
 	@Override
-	public void guardarProducto(ProductoCarrito productoCarrito) {
+	public void guardarProducto(ProductoCarrito productoCarrito, Authentication authentication) {
+		
+		Usuario cliente=clienteServices.GetbyEmail(authentication.getName());
+		productoCarrito.setFechaDeAgregado(Date.valueOf(LocalDate.now()));
+		productoCarrito.setCliente(cliente);
 		productoCarritoRepository.save(productoCarrito);
 	}
 
@@ -45,8 +54,11 @@ public class ProductoCarritoServicesImpl implements ProductoCarritoServices{
 		
 	}
 	
-	
 	@Autowired
 	private ProductoCarritoRepository productoCarritoRepository;
 
+	@Autowired
+	private ClienteServices clienteServices;
+
+	
 }

@@ -36,7 +36,7 @@
               <label for="validationCustom04" class="form-label">Categoria</label>
               <select class="form-select" th:field="*{categoria.id}" id="validationCustom04" required>
                 
-                <option th:each="categoria: ${categorias}" th:value="${categoria.id}" th:field="*{categoria.id}" th:text="${categoria.nombre}" ></option>
+                <option th:each="categoria: ${categorias}" th:value="${categoria.id}"  th:text="${categoria.nombre}" ></option>
               </select>
            
             </div>

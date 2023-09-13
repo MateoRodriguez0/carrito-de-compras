@@ -24,7 +24,11 @@ public class VendedorServicesImpl implements VendedorServices {
 		return usuarioRepository.existsByCorreoElectronico(email);
 	}
 
-	
+	@Override
+	public Usuario GetbyEmail(String email) {
+		
+		return usuarioRepository.findByCorreoElectronico(email);
+	}
 	
 	@Autowired
 	private UsuarioRepository usuarioRepository;
