@@ -1,4 +1,3 @@
-![Captura de pantalla 2023-09-12 201501](https://github.com/mateorodriguez-byte/carrito-de-compras/assets/107595139/738d4479-4ba0-483f-b7fe-605d76d6b96e)# carrito-de-compras
 App carro de compras hecho con spring boot 3
 esta app será una aplicacion web desarrollada con spring boot 3
 para poner en practica mis conocimientos en este framework.
