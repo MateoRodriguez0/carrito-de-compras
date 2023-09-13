@@ -23,10 +23,12 @@ caracteristicas:
 
 
 tecnologias usadas:
-- Spring mvc
+- Spring Framework
 - thymeleaf
 - Boostrap framework
-- Hibernate o JPA
+- Hibernate Validator
+- Mysql
+- Hibernate ORM o JPA
 
 
 
