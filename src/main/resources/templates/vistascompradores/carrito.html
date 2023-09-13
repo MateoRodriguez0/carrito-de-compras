@@ -22,15 +22,20 @@
             <div class="card-body">
               <a th:href="@{/carritodecompras/principal}"><button type="button" class="btn btn-outline-primary">Ir de compras</button></a> 
             
+              
               <div th:if="${msj !=null }" class="alert alert-success alert-dismissible fade show" id="msj" role="alert">
                 <h5 id="msj-actualizado" th:text="${msj}"></h5> 
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
               </div>
+              <div th:if="${msjEliminado !=null }" class="alert alert-danger alert-dismissible fade show" id="msj" role="alert">
+                <h5  th:text="${msjEliminado}"></h5> 
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
               
-          <div th:if="${msjIntentoDeAgregado !=null}" class="alert alert-warning alert-dismissible fade show" id="msj" role="alert">
-           <h5 th:text="${msjIntentoDeAgregado}"></h5>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
+              <div th:if="${msjIntentoDeAgregado !=null}" class="alert alert-warning alert-dismissible fade show" id="msj" role="alert">
+              <h5 th:text="${msjIntentoDeAgregado}"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
                   
               <hr>
 

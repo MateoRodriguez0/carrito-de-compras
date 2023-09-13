@@ -137,6 +137,7 @@ public class ClienteController {
 		System.out.println(productoEliminar.getId());
 		
 		productoCarritoServices.eliminarProducto(productoEliminar);
+		redirectAttributes.addFlashAttribute("msjEliminado", msjProductoEliminado);
 		
 		return redirectAlCarrito;
 	}
@@ -186,6 +187,24 @@ public class ClienteController {
 			
 	}
 	
+
+	/**
+	 * busca un productoCarrito por id y devuelve una pagina cargada con la informacion del producto.
+	 * 
+	 * @param id identificador del productoCarrito que se va a ver la informacion.
+	 * @param model contiene los atributos de las vistas.
+	 * @return la pagina de detalles de un producto.
+	 */
+	@GetMapping( value = "/producto/{id}/informacion")
+	public String informaciondelProductoCarrito(@PathVariable("id")Long id,Model model) {
+
+		ProductoStock productoStock=productoStockServices.getById(id);
+		model.addAttribute("productoInfo",productoStock);
+		model.addAttribute("delCarrito", true);
+
+		return vistaInformacionProducto;
+	}
+	
 	
 	/**
 	 * Contiene algunos atributos necesarios para las vistas.
@@ -207,6 +226,8 @@ public class ClienteController {
 	private final String vistaEliminar="vistascompradores/eliminar";
 	private static final String msjAgregado="Se ha agregado un Nuevo producto al Carrito";
 	private static final String msjProductoEncontrado="El producto ya Se encuentra agregado al Carrito";
+	private static final String msjProductoEliminado="Se ha eliminado un producto del Carrito";
+	private final String vistaInformacionProducto ="vistascompradores/informacionproducto";
 	
 
 	@Autowired

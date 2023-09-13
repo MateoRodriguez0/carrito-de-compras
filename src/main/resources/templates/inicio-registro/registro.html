@@ -94,7 +94,7 @@
 			<br>
 
 			<div class="container-input">
-				<input  class="rounded-pill"  type="date" id="especial"  th:field="*{fechaDeNacimiento}" placeholder="fecha de nacimiento" height="40px" >
+				<input  class="rounded-pill"  type="date" id="especial"  th:field="*{fechaDeNacimiento}" placeholder="fecha de nacimiento" height="40px"  required>
 				<div class="img" th:if="${#fields.hasErrors('*') || usuario.fechaDeNacimiento!=null}">
 					<img th:if="${#fields.hasErrors('fechaDeNacimiento')|| !usuario.esMayordeEdad()}" th:src="@{/images/advertencia-de-triangulo.png}" alt="26px">
 					<img th:unless="${#fields.hasErrors('fechaDeNacimiento')|| !usuario.esMayordeEdad()}" th:src="@{/images/marque-el-circulo.png}" alt="26px">

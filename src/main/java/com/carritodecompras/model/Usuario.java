@@ -39,6 +39,7 @@ import lombok.NoArgsConstructor;
  *
  */
  
+
 @Component
 @Entity
 @Table(name = "usuarios")
@@ -52,21 +53,21 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotBlank()
-	@Size(min = 5, max = 45)
-	@NotEmpty()
-	@Column()
+	@NotBlank(message = "El campo nombre no puede estar en blanco")
+	@Size(min = 5, max = 45,message = "El campo nombre no esta bien")
+	@NotEmpty(message = "El campo nombre no puede estar vacio")
+	@Column(name = "nombre")
 	private String nombre;
 	
 	
-	@NotBlank()
-	@NotEmpty()
+	@NotBlank(message = "El campo nombre de usuario no puede estar en blanco")
+	@NotEmpty(message = "El campo nombre de usuario no puede estar vacio")
 	@Column(name = "nombre de usuario")
 	private String nombreUsuario;
 	
 	
-	@NotBlank()
-	@NotEmpty()
+	@NotBlank(message = "El campo correo electronicoe no puede estar en blanco")
+	@NotEmpty(message = "El campo correo electronico no puede estar vacio")
 	@Column(name = "correoElectronico")
 	@Email
 	private String correoElectronico;
@@ -76,21 +77,21 @@ public class Usuario {
 	private String telefono;	
 	
 	@Password
-	@NotBlank()
-	@NotEmpty()
+	@NotBlank(message = "El campo contraseña no puede estar en blanco")
+	@NotEmpty(message = "El campo contraseña no puede estar vacio")
 	@Column(name = "password")
 	private String password;
 	
 	
 	@Password
 	@Transient
-	@NotBlank()
-	@NotEmpty()
+	@NotBlank(message = "El campo  verificación de contraseña no puede estar en blanco")
+	@NotEmpty(message = "El campo verificación de contraseña no puede estar vacio")
 	private String passwordValid;
 	
 	
 	
-	@NotNull()
+	@NotNull(message = "El campo fecha de nacimiento no puede estar vacio")
 	@Column(name = "fecha de nacimiento")
 	private Date fechaDeNacimiento;
 	
@@ -119,6 +120,7 @@ public class Usuario {
 	 */
 	@OneToMany(mappedBy = "cliente",cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
 	private List<ProductoCarrito> productoCarritos;
+	
 	
 	
 	
