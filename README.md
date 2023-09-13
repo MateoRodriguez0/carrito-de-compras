@@ -30,7 +30,6 @@ tecnologias usadas:
 - Mysql
 - Hibernate ORM o JPA
 - spring security
-- validacion de formularios con hibernate
 
 
 ![Captura de pantalla 2023-09-12 201432](https://github.com/mateorodriguez-byte/carrito-de-compras/assets/107595139/95894e34-0b56-4183-814e-ec319e97a274)
