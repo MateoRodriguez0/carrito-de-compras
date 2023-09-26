@@ -2,6 +2,8 @@ package com.carritodecompras.model;
 
 import java.util.List;
 
+import org.springframework.security.core.GrantedAuthority;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -29,7 +31,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Rol {
+public class Rol implements GrantedAuthority{
+	
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,6 +47,12 @@ public class Rol {
 	 */
 	@OneToMany(mappedBy = "rol",cascade = {CascadeType.REMOVE})
 	private List<Usuario> usuarios;
+
+	@Override
+	public String getAuthority() {
+		
+		return nombre;
+	}
 	
 	
 }
