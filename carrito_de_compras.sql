@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 10-09-2023 a las 21:00:05
+-- Tiempo de generación: 19-09-2023 a las 16:26:07
 -- Versión del servidor: 8.0.31
 -- Versión de PHP: 8.0.26
 
@@ -76,14 +76,17 @@ CREATE TABLE IF NOT EXISTS `productos en carrito` (
   PRIMARY KEY (`Id`),
   KEY `fk_IdProducto_Stock` (`IdProducto_Stock`),
   KEY `Fk_idCliente` (`IdCliente`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `productos en carrito`
 --
 
 INSERT INTO `productos en carrito` (`Id`, `IdProducto_Stock`, `IdCliente`, `cantidad seleccionada`, `fecha de agregado`) VALUES
-(1, 3, 10, 5, '2023-08-28 00:00:00');
+(5, 10, 10, 1, '2023-09-12 00:00:00'),
+(7, 113, 10, 1, '2023-09-12 00:00:00'),
+(8, 136, 10, 3, '2023-09-12 00:00:00'),
+(9, 114, 10, 3, '2023-09-12 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -104,15 +107,14 @@ CREATE TABLE IF NOT EXISTS `productos en stock` (
   PRIMARY KEY (`Id`),
   KEY `FK_IdCategoria` (`IdCategoria`),
   KEY `FK_IdUsuario` (`IdVendedor`)
-) ENGINE=InnoDB AUTO_INCREMENT=142 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=147 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `productos en stock`
 --
 
 INSERT INTO `productos en stock` (`Id`, `nombre`, `descripcion`, `IdCategoria`, `precio`, `cantidad disponible`, `IdVendedor`, `fecha de publicacion`) VALUES
-(3, ' Coche de paseo Bebesit Prima', 'Bebesit es una empresa que desde hace 60 años sostiene que si los bebés se sienten protegidos el mundo que los rodea será mucho más placentero y feliz. Sus productos están orientados a garantizar que los más pequeños reciban el confort, la comodidad y la seguridad que los padres están buscando.\r\n\r\nEl cochecito de paseo es para niños y niñas a partir de los 6 meses, cuando su espalda y cuello están más rígidos. Se reclina horizontalmente, lo que permite un descanso seguro y cómodo.\r\n\r\nMás funcionalidades\r\nIncluye canasto, portavaso para estar preparados en cada salida.', 15, 799900, 27, 9, '2023-08-28 00:00:00'),
-(10, 'Xiaomi Redmi Note 12 Pro+ ', 'Dispositivo desbloqueado para que elijas la compañía telefónica que prefieras.\r\nCompatible con redes 5G.\r\nPantalla AMOLED de 6.67\".\r\nTiene 3 cámaras traseras de 200Mpx/8Mpx/2Mpx.\r\nCámara delantera de 16Mpx.\r\nProcesador MediaTek Dimensity 1080 Octa-Core de 2.6GHz con 8GB de RAM.\r\nBatería de 5000mAh.\r\nMemoria interna de 256GB.\r\nResistente a las salpicaduras.\r\nCon sensor de huella dactilar.\r\nResistente al polvo.', 3, 1354900, 50, 9, '2023-08-08 09:30:02'),
+(10, 'Xiaomi Redmi Note 12 Pro+ ', 'Dispositivo desbloqueado para que elijas la compañía telefónica que prefieras.\r\nCompatible con redes 5G.\r\nPantalla AMOLED de 6.67\".\r\nTiene 3 cámaras traseras de 200Mpx/8Mpx/2Mpx.\r\nCámara delantera de 16Mpx.\r\nProcesador MediaTek Dimensity 1080 Octa-Core de 2.6GHz con 8GB de RAM.\r\nBatería de 5000mAh.\r\nMemoria interna de 256GB.\r\nResistente a las salpicaduras.\r\nCon sensor de huella dactilar.\r\nResistente al polvo.', 3, 1354900, 53, 9, '2023-08-08 00:00:00'),
 (112, 'Samsung Galaxy A34 5G', '5G 128 GB awesome graphite 6 GB RAM.\r\nDispositivo desbloqueado para que elijas la compañía telefónica que prefieras.\r\nCompatible con redes 5G.\r\nPantalla Super AMOLED de 6.6\".\r\nTiene 3 cámaras traseras de 48Mpx/8Mpx/5Mpx.\r\nCámara delantera de 13Mpx.\r\nProcesador Mediatek MT6877V Dimensity 1080 Octa-Core de 2.6GHz con 6GB de RAM.\r\nBatería de 5000mAh.\r\nMemoria interna de 128GB.\r\nResistente al agua.\r\nCon reconocimiento facial y sensor de huella dactilar.\r\nResistente al polvo.', 3, 1034900, 15, 9, '2023-08-23 09:50:45'),
 (113, 'Apple iPhone 14 (128 GB) - Morado', 'Pantalla Super Retina XDR de 6.1 pulgadas.(1)\r\nSistema avanzado de cámaras para tomar mejores fotos en cualquier condición de luz.\r\nModo Cine ahora en 4K Dolby Vision de hasta 30cps.\r\nModo Acción para lograr videos estables, aún con cámara en mano.\r\nDetección de Choques(2), una funcionalidad de seguridad que pide ayuda cuando tú no puedes.\r\nBatería para todo el día y hasta 26 horas de reproducción de vídeo.(3)\r\nA15 Bionic, con GPU e 5 núcleos para un rendimiento fuera de serie. Red 5G ultrarrápida.(4)\r\nCeramic Shield y resistencia al agua, características de durabilidad líderes en la industria.(5)\r\niOS 16 ofrece aún más opciones de personalización y más formas de comunicarse y compartir.(6)', 3, 3600405, 13, 9, '2023-07-10 09:50:45'),
 (114, 'Moto G22 128 GB', 'pearl white 4 GB RAM.\r\nDispositivo desbloqueado para que elijas la compañía telefónica que prefieras.\r\nPantalla IPS de 6.5\".\r\nTiene 4 cámaras traseras de 50Mpx/8Mpx/2Mpx/2Mpx.\r\nCámara delantera de 16Mpx.\r\nProcesador Mediatek MT6765V/CB Helio G37 Octa-Core de 2.3GHz con 4GB de RAM.\r\nBatería de 5000mAh.\r\nMemoria interna de 128GB.\r\nResistente a las salpicaduras.\r\nCon reconocimiento facial y sensor de huella dactilar.', 3, 553388, 25, 9, '2023-09-01 09:50:45'),
@@ -142,7 +144,9 @@ INSERT INTO `productos en stock` (`Id`, `nombre`, `descripcion`, `IdCategoria`, 
 (138, 'Pantalón Azul Mp 87100', 'Pantalon:Tiro semi medio, silueta semi ajustada,.material:Burda, color AzulPonte a la moda con nuestras prendas y sentiras la diferencia, ponlo a prueba con tu estilo y apreciaras el valor de un producto construido para durar y combinar con cualquier outfit. La moda esta al alcance de la elección de un buen accesorio, .Se pueden tramitar cambios y devoluciones por calidad, favor evitar realizar el envio de los mismos, sucios y/o alterados. No se aceptan cambios de panty, fajas, vestidos de baño y baby doll.Recomendación: Lavar a mano, usar jabón suave, no retorcer, no dejar en remojo, secar a la sombra.', 13, 49999, 36, 9, '2023-05-20 09:50:45'),
 (139, 'Tenis Converse Bota Chuck', 'Taylor All Star Unisex-negro\r\nPRODUCTO:\r\n\r\nNombre: Tenis Converse Bota Chuck Taylor All Star Unisex\r\nMarca: Converse\r\n\r\nDESCRIPCIÓN:\r\n\r\nElaborado en tela de primera calidad que permite un ajuste optimo además de hacerlo una prenda con mayor flujo de aire interno haciéndolo un calzado cómodo y versátil para las actividades diarias; cuenta con un diseño clásico de la marca Converse siendo de cobertura amplia ya que cubre el tobillo así mismo añade cierre en cordones con ojales metálicos para un ajuste personalizado de igual manera Cuenta con el clásico parche con el logotipo distintivo de la estrella en forma de parche en el lateral externo en material sintético dando mayor estilo; La suela está elaborada en caucho con Patrón gráfico que brinda tracción\r\n\r\nCARACTERÍSTICAS PRINCIPALES:\r\n\r\n-Capellada en textil\r\n-Ojales metálicos\r\n-Cierre en cordones\r\n-Parche Clásico Converse\r\n-Suela en Caucho\r\n\r\nMÁS DETALLES:\r\n\r\nPeso del paquete: 1 kg\r\nModelo: M7650C\r\nMeses de garantía: 1\r\nGarantía: Por defectos de fábrica\r\nCondición: Nuevo\r\nGénero: Unisex\r\nEstilo: Urbano\r\nSKU: M7650C_6\r\n\r\n', 13, 314990, 442, 9, '2023-07-12 09:50:45'),
 (140, 'Tenis De Running', 'Ua Charged Rogue 3 Para Mujer 3024888-501-6\r\n¡Hola! Estás en la tienda oficial de Under Armour Colombia. Nuestra Misión. Under Armour te hace mejor. De esta forma inspiramos a todos los atletas o apasionados por el deporte con soluciones de alto rendimiento que no sabían que necesitaban, pero después de probarlas no se pueden imaginar viviendo sin ellas. Todo lo que hacemos gira en torno al rendimiento humano, entregando lo necesario para empujarte más allá de cualquier límite. Todos los productos que creamos se hacen para hacer mejor a todos los deportistas.\r\n\r\n* ¡Hola! Estás en la tienda oficial de Under Armour Colombia. Somos la marca deportiva que te hace mejor, ¿Cómo? Inspirando a todos los atletas y apasionados por el deporte con soluciones de alto rendimiento que no sabían que necesitaban, pero después de probarlas no se pueden imaginar viviendo sin ellas. ¡No olvides revisar la guía de tallas antes de realizar tu compra!', 13, 259935, 513, 9, '2023-06-15 09:50:45'),
-(141, 'Tenis Hombre Nike Air Max Sc', 'PRODUCTO:\r\n\r\nNombre: Tenis Hombre Nike Air Max Sc\r\nMarca: Nike\r\n\r\nDESCRIPCIÓN:\r\n\r\n- Modelo: CW4555-002\r\n- Nombre Articulo: Air Max Sc\r\n- Categoría: Nike Sportswear\r\n- Color: Black/White-Black\r\n- Genero: Hombre\r\n\r\nMÁS DETALLES:\r\n\r\nPeso del paquete: 2 kg\r\nMedidas: 11 cm x 28 cm x 36 cm cm\r\nModelo: CW4555-002\r\nMeses de garantía: 2\r\nGarantía: SI\r\nCondición: Nuevo\r\nColor: Gris\r\nNombre de color: Gris\r\nGénero: Masculino\r\nSKU: 117333100049', 13, 532950, 45, 9, '2023-09-06 09:50:45');
+(141, 'Tenis Hombre Nike Air Max Sc', 'PRODUCTO:\r\n\r\nNombre: Tenis Hombre Nike Air Max Sc\r\nMarca: Nike\r\n\r\nDESCRIPCIÓN:\r\n\r\n- Modelo: CW4555-002\r\n- Nombre Articulo: Air Max Sc\r\n- Categoría: Nike Sportswear\r\n- Color: Black/White-Black\r\n- Genero: Hombre\r\n\r\nMÁS DETALLES:\r\n\r\nPeso del paquete: 2 kg\r\nMedidas: 11 cm x 28 cm x 36 cm cm\r\nModelo: CW4555-002\r\nMeses de garantía: 2\r\nGarantía: SI\r\nCondición: Nuevo\r\nColor: Gris\r\nNombre de color: Gris\r\nGénero: Masculino\r\nSKU: 117333100049', 13, 532950, 45, 9, '2023-09-06 09:50:45'),
+(145, 'ejemplo', 'descripcion del producto', 6, 50000, 15, 9, '2023-09-12 00:00:00'),
+(146, 'ejemplo2', 'descripcion del producto', 18, 100000, 155, 9, '2023-09-12 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -177,13 +181,14 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `Id` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) NOT NULL,
   `nombre de usuario` varchar(20) NOT NULL,
-  `correo electronico` varchar(50) NOT NULL,
-  `password` varchar(15) DEFAULT NULL,
+  `correoElectronico` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `password` varchar(60) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `activo` int NOT NULL DEFAULT '1',
   `telefono` varchar(10) DEFAULT NULL,
   `fecha de nacimiento` date NOT NULL,
   `IdRol` int NOT NULL,
   PRIMARY KEY (`Id`),
-  UNIQUE KEY `correo electronico` (`correo electronico`),
+  UNIQUE KEY `correo electronico` (`correoElectronico`),
   KEY `IdRol` (`IdRol`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
@@ -191,9 +196,9 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`Id`, `nombre`, `nombre de usuario`, `correo electronico`, `password`, `telefono`, `fecha de nacimiento`, `IdRol`) VALUES
-(9, 'Admin', 'Admin', 'Admin@gmail.com', 'Admin.123', '3148918702', '2004-03-04', 2),
-(10, 'Mateo josue Rodriguez Chico', 'Mateo', 'mateo204r@gmail.com', 'Mateo.123', '3148918702', '2004-03-04', 1);
+INSERT INTO `usuarios` (`Id`, `nombre`, `nombre de usuario`, `correoElectronico`, `password`, `activo`, `telefono`, `fecha de nacimiento`, `IdRol`) VALUES
+(9, 'Admin', 'Admin', 'Admin@gmail.com', '$2a$10$zfHAlRP5PqQLFewPFxDyNO1bTGgOE98OAIPEkoLK4/6HJgDytRRl6', 1, '3148918702', '2004-03-04', 2),
+(10, 'Mateo josue Rodriguez Chico', 'Mateo', 'mateo204r@gmail.com', '$2a$10$zfHAlRP5PqQLFewPFxDyNO1bTGgOE98OAIPEkoLK4/6HJgDytRRl6', 1, '3148918702', '2004-03-04', 1);
 
 --
 -- Restricciones para tablas volcadas

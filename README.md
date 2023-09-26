@@ -1,4 +1,3 @@
-# carrito-de-compras
 App carro de compras hecho con spring boot 3
 esta app será una aplicacion web desarrollada con spring boot 3
 para poner en practica mis conocimientos en este framework.
@@ -14,12 +13,13 @@ funcionamiento de la aplicacion:
 - Ordenar listado de productos precio de menor a mayor
 - Ordenar listado de productos precio de mayor a  menor
 - ver solo productos por categoria
-- 
+- paginacion de productos de la tienda
+
+
 
 caracteristicas:
 - solo los usuarios de tipo comprador podran agregar productos al carrito de compras
 - solo los usuarios de tipo vendedor podran vender productos en la tienda
-
 
 
 tecnologias usadas:
@@ -29,16 +29,26 @@ tecnologias usadas:
 - Hibernate Validator
 - Mysql
 - Hibernate ORM o JPA
+- spring security
 
 
+![Captura de pantalla 2023-09-12 201432](https://github.com/mateorodriguez-byte/carrito-de-compras/assets/107595139/95894e34-0b56-4183-814e-ec319e97a274)
+![Captura de pantalla 2023-09-12 201501](https://github.com/mateorodriguez-byte/carrito-de-compras/assets/107595139/e390f490-6cb5-4040-a5ac-7267f4420b1e)
+![Captura de pantalla 2023-09-12 201325](https://github.com/mateorodriguez-byte/carrito-de-compras/assets/107595139/ad7169cc-2f48-49be-8c4f-12438c301f22)
+![Captura de pantalla 2023-09-12 201344](https://github.com/mateorodriguez-byte/carrito-de-compras/assets/107595139/47f0e296-83aa-4a95-9cc3-0b5996ed9e58)
+![Captura de pantalla 2023-09-12 200433](https://github.com/mateorodriguez-byte/carrito-de-compras/assets/107595139/df55e586-25b7-4adf-94ce-ef7abc1cebea)
+![Captura de pantalla 2023-09-12 200612](https://github.com/mateorodriguez-byte/carrito-de-compras/assets/107595139/b01dddb2-d3c6-4cfe-b635-20a11a9a8156)
+![Captura de pantalla 2023-09-12 194746](https://github.com/mateorodriguez-byte/carrito-de-compras/assets/107595139/b456ab5b-f146-4d4b-9a28-ceb97f9f46db)
 
-![Captura de pantalla 2023-08-09 162337-2](https://github.com/mateorodriguez-byte/carrito-de-compras/assets/107595139/b433854f-f70c-441b-bc50-a7e643dc3118)
-![Captura de pantalla 2023-08-09 162246-2](https://github.com/mateorodriguez-byte/carrito-de-compras/assets/107595139/7ec200db-fbc3-4408-a7a8-d36e5b783db7)
-[recording-2023-08-09-17-13-13 (2).webm](https://github.com/mateorodriguez-byte/carrito-de-compras/assets/107595139/b20aab38-1a39-4705-bd7c-fe8a2e5a63d8)
-![productos_tienda](https://github.com/mateorodriguez-byte/carrito-de-compras/assets/107595139/910f3638-697e-4ca2-9fd6-744507eb54c5)
-![Captura de pantalla 2023-08-09 163845](https://github.com/mateorodriguez-byte/carrito-de-compras/assets/107595139/5994827f-adb3-4a7a-8bb6-e463c03da846)
-![Captura de pantalla 2023-08-09 163953-4](https://github.com/mateorodriguez-byte/carrito-de-compras/assets/107595139/13baab0e-334a-4f66-94e6-61651a2e383f)
-![Captura de pantalla 2023-08-09 162454-3](https://github.com/mateorodriguez-byte/carrito-de-compras/assets/107595139/b612133d-a788-4378-b025-95c48fc6aff6)
 
+Videos
+
+https://github.com/mateorodriguez-byte/carrito-de-compras/assets/107595139/99b57b10-3226-4b12-9b12-f38655cd37d5
+https://github.com/mateorodriguez-byte/carrito-de-compras/assets/107595139/d39af4a7-7eda-4737-a645-3cc64b92ed72
+https://github.com/mateorodriguez-byte/carrito-de-compras/assets/107595139/78acbb28-c9c1-49d4-8f5e-4c30ffa6667a
+https://github.com/mateorodriguez-byte/carrito-de-compras/assets/107595139/058256c9-c7d9-425a-8487-b0da50b33736
+https://github.com/mateorodriguez-byte/carrito-de-compras/assets/107595139/373f3e02-bbe5-4255-80cd-df0fa1162873
+https://github.com/mateorodriguez-byte/carrito-de-compras/assets/107595139/91cb2560-3957-4579-b681-7782c11397cf
+https://github.com/mateorodriguez-byte/carrito-de-compras/assets/107595139/1d5bf7ac-e300-4af5-b805-d0d13c5ff4a2
 
 
