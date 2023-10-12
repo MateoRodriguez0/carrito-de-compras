@@ -1,5 +1,6 @@
-App carro de compras hecho con spring boot 3
-esta app será una aplicacion web desarrollada con spring boot 3
+# Carrito de compras 
+
+esta app es una aplicacion web desarrollada con spring boot 3
 para poner en practica mis conocimientos en este framework.
 
 
