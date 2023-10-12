@@ -23,14 +23,17 @@ caracteristicas:
 - solo los usuarios de tipo vendedor podran vender productos en la tienda
 
 
-tecnologias usadas:
-- Spring Framework
-- thymeleaf
+### tecnologias usadas:
+
+- Jakarata bean validation
 - Boostrap framework
-- Hibernate Validator
+- Spring Framework
+- Spring Data JPA
+- Spring security
+- Thymeleaf
 - Mysql
-- Hibernate ORM o JPA
-- spring security
+
+
 
 
 ![Captura de pantalla 2023-09-12 201432](https://github.com/mateorodriguez-byte/carrito-de-compras/assets/107595139/95894e34-0b56-4183-814e-ec319e97a274)
