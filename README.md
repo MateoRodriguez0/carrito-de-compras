@@ -57,8 +57,10 @@ Videos
 #### Filtrado de productos por categoria e intento de agregar un producto existente en el carrito
 - https://github.com/mateorodriguez-byte/carrito-de-compras/assets/107595139/78acbb28-c9c1-49d4-8f5e-4c30ffa6667a
 
-#### logout con spring security
+#### Logout con spring security
 - https://github.com/mateorodriguez-byte/carrito-de-compras/assets/107595139/058256c9-c7d9-425a-8487-b0da50b33736
+
+  
 - https://github.com/mateorodriguez-byte/carrito-de-compras/assets/107595139/373f3e02-bbe5-4255-80cd-df0fa1162873
 - https://github.com/mateorodriguez-byte/carrito-de-compras/assets/107595139/91cb2560-3957-4579-b681-7782c11397cf
 - https://github.com/mateorodriguez-byte/carrito-de-compras/assets/107595139/1d5bf7ac-e300-4af5-b805-d0d13c5ff4a2
