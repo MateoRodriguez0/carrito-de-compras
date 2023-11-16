@@ -35,17 +35,6 @@ caracteristicas:
 
 
 
-
-![Captura de pantalla 2023-09-12 201432](https://github.com/mateorodriguez-byte/carrito-de-compras/assets/107595139/95894e34-0b56-4183-814e-ec319e97a274)
-
-![Captura de pantalla 2023-09-12 201501](https://github.com/mateorodriguez-byte/carrito-de-compras/assets/107595139/e390f490-6cb5-4040-a5ac-7267f4420b1e)
-![Captura de pantalla 2023-09-12 201325](https://github.com/mateorodriguez-byte/carrito-de-compras/assets/107595139/ad7169cc-2f48-49be-8c4f-12438c301f22)
-![Captura de pantalla 2023-09-12 201344](https://github.com/mateorodriguez-byte/carrito-de-compras/assets/107595139/47f0e296-83aa-4a95-9cc3-0b5996ed9e58)
-![Captura de pantalla 2023-09-12 200433](https://github.com/mateorodriguez-byte/carrito-de-compras/assets/107595139/df55e586-25b7-4adf-94ce-ef7abc1cebea)
-![Captura de pantalla 2023-09-12 200612](https://github.com/mateorodriguez-byte/carrito-de-compras/assets/107595139/b01dddb2-d3c6-4cfe-b635-20a11a9a8156)
-![Captura de pantalla 2023-09-12 194746](https://github.com/mateorodriguez-byte/carrito-de-compras/assets/107595139/b456ab5b-f146-4d4b-9a28-ceb97f9f46db)
-
-
 ### Videos
 - https://github.com/mateorodriguez-byte/carrito-de-compras/assets/107595139/058256c9-c7d9-425a-8487-b0da50b33736
 
