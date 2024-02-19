@@ -26,11 +26,11 @@ caracteristicas:
 ### tecnologias usadas:
 
 - Jakarata bean validation
-- Boostrap framework
 - Spring Framework
 - Spring Data JPA
 - Spring security
 - Thymeleaf
+- Boostrap 
 - Mysql
 
 
